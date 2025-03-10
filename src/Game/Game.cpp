@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Timer.h"
 
+
 Game* Game::s_Instance = nullptr;
 Warrior* Knight = nullptr;
 
@@ -29,6 +30,11 @@ bool Game::Init()
 		return false;
 	}
 	
+	if (!MapParser::GetInstance()->Load())
+	{
+		cout << "Failed to load map" << endl;
+	}
+	m_Map = MapParser::GetInstance()->GetMap("MAP");
 
 	TextureManager::GetInstance()->Load("dragon", "assets/Dragon Tyrant.png");
 	TextureManager::GetInstance()->Load("idleKnight", "assets/IdleKnight.png");
@@ -44,7 +50,7 @@ bool Game::Init()
 void Game::Update()
 {
 	float dt = Timer::GetInstance()->GetDeltaTime();
-	
+	m_Map->Update();
 	Knight->Update(dt);
 }
 
@@ -59,6 +65,9 @@ void Game::Render()
 	SDL_RenderClear(m_Renderer);
 
 	TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801);
+
+	m_Map->Render();
+	
 	Knight->Render();
 	SDL_RenderPresent(m_Renderer);
 }

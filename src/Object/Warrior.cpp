@@ -12,12 +12,14 @@ void Warrior::Update(float dt)
 	m_Rigidbody->UnSetForce();
 	m_Animation->SetProps(m_TextureID, 0, 10, 80);
 
+	//sang trai
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
 	{
 		m_Rigidbody->ApplyForceX(10 * BACKWARD);
 		m_Animation->SetProps("RunKnight", 0, 10, 80, SDL_FLIP_HORIZONTAL);
 	}
 
+	//sang phai
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D))
 	{
 		m_Rigidbody->ApplyForceX(10 * FORWARD);
@@ -25,7 +27,7 @@ void Warrior::Update(float dt)
 	}
 
 	m_Rigidbody->Update(dt);
-	cout << dt << endl;
+	
 	m_Transform->TransformAddX(m_Rigidbody->GetPosition().X);
 	//m_Transform->TransformAddY(m_Rigidbody->GetPosition().Y);
 

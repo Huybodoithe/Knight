@@ -3,6 +3,8 @@ D:\ForVisualCode\GameBodoi\GameBodoi\src\Game\Game.cpp;D:\ForVisualCode\GameBodo
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Game\main.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\main.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Graphics\TextureManager.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\TextureManager.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Input\Input.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Input.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser\MapParser.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\MapParser.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser\TileLayer.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\TileLayer.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Warrior.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Rigidbody.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Rigidbody.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Timer\Timer.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Timer.obj

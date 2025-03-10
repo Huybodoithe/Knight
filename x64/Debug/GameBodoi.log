@@ -1,8 +1,8 @@
-﻿  Warrior.cpp
+﻿  Game.cpp
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(34,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Warrior.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(34,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Warrior.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
   GameBodoi.vcxproj -> D:\ForVisualCode\GameBodoi\x64\Debug\GameBodoi.exe

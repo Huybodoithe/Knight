@@ -2,7 +2,7 @@
 #include <iostream>
 #include "SDL.h"
 #include "SDL_image.h"
-
+#include "MapParser.h"
 
 using namespace std;
 
@@ -37,4 +37,6 @@ private:
 
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
+
+	GameMap* m_Map;
 };
