@@ -9,6 +9,7 @@ using namespace std;
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
+
 class Game
 {
 public:
@@ -29,6 +30,7 @@ public:
 
 	inline SDL_Renderer* GetRenderer() { return m_Renderer; }
 
+	inline GameMap* GetMap() { return m_Map; }
 private:
 
 	static Game* s_Instance;

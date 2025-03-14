@@ -22,10 +22,12 @@
     <ClCompile Include="src\Animation\Animation.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Game\main.cpp" />
+    <ClCompile Include="src\Graphics\Camera.cpp" />
     <ClCompile Include="src\Graphics\TextureManager.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\MapParser\MapParser.cpp" />
     <ClCompile Include="src\MapParser\TileLayer.cpp" />
+    <ClCompile Include="src\Physics\CollisionHandler.cpp" />
     <ClCompile Include="src\Object\Warrior.cpp" />
     <ClCompile Include="src\Physics\Rigidbody.cpp" />
     <ClCompile Include="src\Timer\Timer.cpp" />
@@ -37,14 +39,18 @@
   <ItemGroup>
     <ClInclude Include="src\Animation\Animation.h" />
     <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\TextureManager.h" />
     <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\MapParser\GameMap.h" />
     <ClInclude Include="src\MapParser\Layer.h" />
     <ClInclude Include="src\MapParser\MapParser.h" />
     <ClInclude Include="src\MapParser\TileLayer.h" />
+    <ClInclude Include="src\Physics\Collider.h" />
+    <ClInclude Include="src\Physics\CollisionHandler.h" />
     <ClInclude Include="src\Object\GameObjet.h" />
     <ClInclude Include="src\Object\Warrior.h" />
+    <ClInclude Include="src\Physics\Point.h" />
     <ClInclude Include="src\Physics\Rigidbody.h" />
     <ClInclude Include="src\Physics\Transform.h" />
     <ClInclude Include="src\Physics\Vector2D.h" />

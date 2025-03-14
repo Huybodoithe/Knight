@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL.h"
 
+enum Axis {HORIZONTAL, VERTICAL};
+
 class Input
 {
 public:
@@ -8,6 +10,8 @@ public:
 
 	void Listen();
 	bool GetKeyDown(SDL_Scancode key);
+	
+	int GetAxisKey(Axis axis);
 
 private:
 	Input();

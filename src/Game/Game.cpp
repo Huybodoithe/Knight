@@ -3,6 +3,7 @@
 #include "Warrior.h"
 #include "Input.h"
 #include "Timer.h"
+#include "Camera.h"
 
 
 Game* Game::s_Instance = nullptr;
@@ -37,10 +38,16 @@ bool Game::Init()
 	m_Map = MapParser::GetInstance()->GetMap("MAP");
 
 	TextureManager::GetInstance()->Load("dragon", "assets/Dragon Tyrant.png");
-	TextureManager::GetInstance()->Load("idleKnight", "assets/IdleKnight.png");
+	TextureManager::GetInstance()->Load("IdleKnight", "assets/IdleKnight.png");
 	TextureManager::GetInstance()->Load("RunKnight", "assets/RunKnight.png");
+	TextureManager::GetInstance()->Load("JumpKnight", "assets/JumpKnight.png");
+	TextureManager::GetInstance()->Load("FallKnight", "assets/FallKnight.png");
+	TextureManager::GetInstance()->Load("Attack1Knight", "assets/Attack1Knight.png");
+	TextureManager::GetInstance()->Load("CrouchKnight", "assets/CrouchKnight.png");
 
-	Knight = new Warrior(new Properties("idleKnight", 100, 100, 120, 80));
+	Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
+
+	Camera::GetInstance()->SetTarget(Knight->GetOrigin());
 
 	m_IsRunning = true;
 
@@ -50,8 +57,12 @@ bool Game::Init()
 void Game::Update()
 {
 	float dt = Timer::GetInstance()->GetDeltaTime();
+	
 	m_Map->Update();
+	
 	Knight->Update(dt);
+	
+	Camera::GetInstance()->Update(dt);
 }
 
 void Game::Events()

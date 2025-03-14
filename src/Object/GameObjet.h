@@ -2,6 +2,7 @@
 #include <iostream>
 #include "TextureManager.h"
 #include "Transform.h"
+#include "Point.h"
 
 using namespace std;
 
@@ -32,6 +33,11 @@ public:
 		: m_TextureID(props->TextureID), m_Width(props->Width), m_Height(props->Height), m_Flip(props->Flip)
 	{
 		m_Transform = new Transform(props->X, props->Y);
+
+		float px = m_Transform->X + m_Width / 2;
+		float py = m_Transform->Y + m_Height / 2;
+
+		m_Origin = new Point(px, py);
 	}
 
 	virtual void Update(float dt) = 0;
@@ -45,4 +51,6 @@ protected:
 	SDL_RendererFlip m_Flip;
 
 	string m_Name;
+
+	Point* m_Origin;
 };
