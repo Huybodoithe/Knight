@@ -37,13 +37,15 @@ bool Game::Init()
 	}
 	m_Map = MapParser::GetInstance()->GetMap("MAP");
 
-	TextureManager::GetInstance()->Load("dragon", "assets/Dragon Tyrant.png");
+	/*TextureManager::GetInstance()->Load("dragon", "assets/Dragon Tyrant.png");
 	TextureManager::GetInstance()->Load("IdleKnight", "assets/IdleKnight.png");
 	TextureManager::GetInstance()->Load("RunKnight", "assets/RunKnight.png");
 	TextureManager::GetInstance()->Load("JumpKnight", "assets/JumpKnight.png");
 	TextureManager::GetInstance()->Load("FallKnight", "assets/FallKnight.png");
 	TextureManager::GetInstance()->Load("Attack1Knight", "assets/Attack1Knight.png");
-	TextureManager::GetInstance()->Load("CrouchKnight", "assets/CrouchKnight.png");
+	TextureManager::GetInstance()->Load("CrouchKnight", "assets/CrouchKnight.png");*/
+
+	TextureManager::GetInstance()->ParseTextures("assets/textures.tml");
 
 	Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
 
@@ -75,7 +77,7 @@ void Game::Render()
 	SDL_SetRenderDrawColor(m_Renderer, 255, 255, 255, 255);
 	SDL_RenderClear(m_Renderer);
 
-	TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801);
+	TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801,0.5);
 
 	m_Map->Render();
 	

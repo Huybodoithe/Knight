@@ -19,6 +19,29 @@ void TextureManager::Load(string id, string filename)
 	}
 }
 
+bool TextureManager::ParseTextures(string source)
+{
+	TiXmlDocument xml;
+	xml.LoadFile(source);
+	if (xml.Error())
+	{
+		cout << "Failed to load " << source << endl;
+		return false;
+	}
+	TiXmlElement* root = xml.RootElement();
+	for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
+	{
+		if (e->Value() == string("texture"))
+		{
+			string id = e->Attribute("id");
+			string src = e->Attribute("source");
+			Load(id, src);
+		}
+	}
+
+	return true;
+}
+
 void TextureManager::Drop(string id)
 {
 	SDL_DestroyTexture(m_TextureMap[id]);
@@ -35,11 +58,13 @@ void TextureManager::Clean()
 	cout << "map is cleared" << endl;
 }
 
-void TextureManager::Draw(string id, int x, int y, int width, int height, SDL_RendererFlip flip)
+
+
+void TextureManager::Draw(string id, int x, int y, int width, int height, float scrollRatio, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect = { 0,0,width,height };
 
-	Vector2D cam = Camera::GetInstance()->GetPosition();
+	Vector2D cam = Camera::GetInstance()->GetPosition()*scrollRatio;
 	SDL_Rect destRect = { x-cam.X,y-cam.Y,width,height };
 
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, 0, flip);

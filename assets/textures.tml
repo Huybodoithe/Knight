@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<textures>
+	<texture id="IdleKnight" source="assets/IdleKnight.png"/>
+	<texture id="RunKnight" source="assets/RunKnight.png"/>
+	<texture id="JumpKnight" source="assets/JumpKnight.png"/>
+	<texture id="FallKnight" source="assets/FallKnight.png"/>
+	<texture id="Attack1Knight" source="assets/Attack1Knight.png"/>
+	<texture id="CrouchKnight" source="assets/CrouchKnight.png"/>
+
+	<texture id="dragon" source="assets/Dragon Tyrant.png"/>
+
+</textures>

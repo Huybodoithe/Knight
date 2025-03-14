@@ -1,16 +1,8 @@
-﻿  Warrior.cpp
+﻿  Game.cpp
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Warrior.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Warrior.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(120,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(120,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(130,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(130,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(156,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(156,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(160,14): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp(161,14): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
   GameBodoi.vcxproj -> D:\ForVisualCode\GameBodoi\x64\Debug\GameBodoi.exe
