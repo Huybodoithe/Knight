@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObjet.h"
-#include "Animation.h"
+#include "SpriteAnimation.h"
 #include "Rigidbody.h"
 #include "Point.h"
 #include "Collider.h"
@@ -17,7 +17,7 @@ class Warrior : public GameObject
 public:
 	Warrior(Properties* props);
 	virtual void Update(float dt);
-	virtual void Render();
+	virtual void Draw();
 	virtual void Clean();
 
 	Point* GetOrigin();
@@ -26,7 +26,7 @@ private:
 	void AnimationState();
 
 private:
-	Animation* m_Animation;
+	SpriteAnimation* m_SpriteAnimation;
 	Rigidbody* m_Rigidbody;
 	
 	bool m_IsRunning;

@@ -12,7 +12,7 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	m_IsAttacking = false;
 	m_IsCrouching = false;
 
-	m_Animation = new Animation();
+	m_SpriteAnimation = new SpriteAnimation();
 	m_Rigidbody = new Rigidbody();
 	m_Rigidbody->SetGravity(3.0f);
 
@@ -33,7 +33,7 @@ Point* Warrior::GetOrigin()
 void Warrior::Update(float dt)
 {
 	m_Rigidbody->UnSetForce();
-	m_Animation->SetProps(m_TextureID, 0, 10, 80);
+	m_SpriteAnimation->SetProps(m_TextureID, 0, 10, 80);
 
 	//sang phai
 	if (Input::GetInstance()->GetAxisKey(HORIZONTAL) == FORWARD && !m_IsAttacking)
@@ -112,7 +112,7 @@ void Warrior::Update(float dt)
 		m_IsAttacking = false;
 		m_AttackTime = ATTACK_TIME;
 	}
-
+	
 	//update x axis
 	m_Rigidbody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
@@ -144,14 +144,14 @@ void Warrior::Update(float dt)
 	AnimationState();
 
 	cout << dt << endl;
-	m_Animation->Update();
+	m_SpriteAnimation->Update(dt);
 
 	
 }
 
-void Warrior::Render()
+void Warrior::Draw()
 {
-	m_Animation->Render(m_Transform->X, m_Transform->Y, m_Width, m_Height, m_Flip);
+	m_SpriteAnimation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1, 1, m_Flip);
 
 	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
@@ -166,22 +166,22 @@ void Warrior::Render()
 void Warrior::AnimationState()
 {
 	//idling
-	m_Animation->SetProps("IdleKnight", 0, 10, 80);
+	m_SpriteAnimation->SetProps("IdleKnight", 0, 10, 80);
 
 	//running
-	if(m_IsRunning) m_Animation->SetProps("RunKnight", 0, 10, 80);
+	if(m_IsRunning) m_SpriteAnimation->SetProps("RunKnight", 0, 10, 80);
 
 	//crouching
-	if (m_IsCrouching) m_Animation->SetProps("CrouchKnight", 0, 1, 200);
+	if (m_IsCrouching) m_SpriteAnimation->SetProps("CrouchKnight", 0, 1, 200);
 
 	//jumping
-	if (m_IsJumping) m_Animation->SetProps("JumpKnight", 0, 3, 200);
+	if (m_IsJumping) m_SpriteAnimation->SetProps("JumpKnight", 0, 3, 200);
 
 	//falling
-	if (m_IsFalling) m_Animation->SetProps("FallKnight", 0, 3, 350);
+	if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 350);
 
 	//attacking
-	if (m_IsAttacking) m_Animation->SetProps("Attack1Knight", 0, 4, 60);
+	if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 60);
 }
 
 void Warrior::Clean()

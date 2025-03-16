@@ -9,4 +9,20 @@
 
 	<texture id="dragon" source="assets/Dragon Tyrant.png"/>
 
+	<texture id="SlimeIdle0" source="assets/Slime/SlimeIdle0.png"/>
+	<texture id="SlimeIdle1" source="assets/Slime/SlimeIdle1.png"/>
+	<texture id="SlimeIdle2" source="assets/Slime/SlimeIdle2.png"/>
+	<texture id="SlimeIdle3" source="assets/Slime/SlimeIdle3.png"/>
+
+	<texture id="SlimeAttack0" source="assets/Slime/SlimeAttack0.png"/>
+	<texture id="SlimeAttack1" source="assets/Slime/SlimeAttack1.png"/>
+	<texture id="SlimeAttack2" source="assets/Slime/SlimeAttack2.png"/>
+	<texture id="SlimeAttack3" source="assets/Slime/SlimeAttack3.png"/>
+	<texture id="SlimeAttack4" source="assets/Slime/SlimeAttack4.png"/>
+
+	<texture id="SlimeDie0" source="assets/Slime/SlimeDie0.png"/>
+	<texture id="SlimeDie1" source="assets/Slime/SlimeDie1.png"/>
+	<texture id="SlimeDie2" source="assets/Slime/SlimeDie2.png"/>
+	<texture id="SlimeDie3" source="assets/Slime/SlimeDie3.png"/>
+
 </textures>

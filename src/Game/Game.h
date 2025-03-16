@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "MapParser.h"
+#include "GameObjet.h"
 
 using namespace std;
 
@@ -41,4 +42,6 @@ private:
 	SDL_Renderer* m_Renderer;
 
 	GameMap* m_Map;
+
+	vector<GameObject*> m_GameObjects;
 };

@@ -60,12 +60,13 @@ void TextureManager::Clean()
 
 
 
-void TextureManager::Draw(string id, int x, int y, int width, int height, float scrollRatio, SDL_RendererFlip flip)
+void TextureManager::Draw(string id, int x, int y, int width, int height, float xScale, float yScale, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect = { 0,0,width,height };
 
-	Vector2D cam = Camera::GetInstance()->GetPosition()*scrollRatio;
-	SDL_Rect destRect = { x-cam.X,y-cam.Y,width,height };
+	Vector2D cam = Camera::GetInstance()->GetPosition();
+	
+	SDL_Rect destRect = { x - cam.X,y - cam.Y,width * xScale,height * yScale };
 
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, 0, flip);
 }

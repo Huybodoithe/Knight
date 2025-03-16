@@ -4,10 +4,12 @@
 #include "Input.h"
 #include "Timer.h"
 #include "Camera.h"
+#include "Enemy.h"
 
 
 Game* Game::s_Instance = nullptr;
 Warrior* Knight = nullptr;
+Enemy* Slime = nullptr;
 
 bool Game::Init()
 {
@@ -48,6 +50,8 @@ bool Game::Init()
 	TextureManager::GetInstance()->ParseTextures("assets/textures.tml");
 
 	Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
+	Slime = new Enemy(new Properties("SlimeIdle", 300, 100, 32, 25));
+
 
 	Camera::GetInstance()->SetTarget(Knight->GetOrigin());
 
@@ -63,6 +67,7 @@ void Game::Update()
 	m_Map->Update();
 	
 	Knight->Update(dt);
+	Slime->Update(dt);
 	
 	Camera::GetInstance()->Update(dt);
 }
@@ -77,11 +82,12 @@ void Game::Render()
 	SDL_SetRenderDrawColor(m_Renderer, 255, 255, 255, 255);
 	SDL_RenderClear(m_Renderer);
 
-	TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801,0.5);
+	//TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801,0.5,0.5);
 
 	m_Map->Render();
 	
-	Knight->Render();
+	Knight->Draw();
+	Slime->Draw();
 	SDL_RenderPresent(m_Renderer);
 }
 

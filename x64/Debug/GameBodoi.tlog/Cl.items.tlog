@@ -1,4 +1,6 @@
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Animation\Animation.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Animation.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Animation\SeqAnimation.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\SeqAnimation.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Animation\SpriteAnimation.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\SpriteAnimation.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Game\Game.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Game.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Game\main.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\main.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Graphics\Camera.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Camera.obj
@@ -6,6 +8,7 @@ D:\ForVisualCode\GameBodoi\GameBodoi\src\Graphics\TextureManager.cpp;D:\ForVisua
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Input\Input.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Input.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser\MapParser.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\MapParser.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser\TileLayer.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\TileLayer.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Enemy.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\CollisionHandler.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\CollisionHandler.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Warrior.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Rigidbody.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Rigidbody.obj

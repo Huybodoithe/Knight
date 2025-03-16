@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Animation\Animation.cpp" />
+    <ClCompile Include="src\Animation\SeqAnimation.cpp" />
+    <ClCompile Include="src\Animation\SpriteAnimation.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Game\main.cpp" />
     <ClCompile Include="src\Graphics\Camera.cpp" />
@@ -27,6 +29,7 @@
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\MapParser\MapParser.cpp" />
     <ClCompile Include="src\MapParser\TileLayer.cpp" />
+    <ClCompile Include="src\Object\Enemy.cpp" />
     <ClCompile Include="src\Physics\CollisionHandler.cpp" />
     <ClCompile Include="src\Object\Warrior.cpp" />
     <ClCompile Include="src\Physics\Rigidbody.cpp" />
@@ -38,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Animation\Animation.h" />
+    <ClInclude Include="src\Animation\SeqAnimation.h" />
+    <ClInclude Include="src\Animation\SpriteAnimation.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\TextureManager.h" />
@@ -46,6 +51,7 @@
     <ClInclude Include="src\MapParser\Layer.h" />
     <ClInclude Include="src\MapParser\MapParser.h" />
     <ClInclude Include="src\MapParser\TileLayer.h" />
+    <ClInclude Include="src\Object\Enemy.h" />
     <ClInclude Include="src\Physics\Collider.h" />
     <ClInclude Include="src\Physics\CollisionHandler.h" />
     <ClInclude Include="src\Object\GameObjet.h" />
