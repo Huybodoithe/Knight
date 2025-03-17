@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Animation\Animation.cpp" />
     <ClCompile Include="src\Animation\SeqAnimation.cpp" />
     <ClCompile Include="src\Animation\SpriteAnimation.cpp" />
+    <ClCompile Include="src\Factory\ObjectFactory.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Game\main.cpp" />
     <ClCompile Include="src\Graphics\Camera.cpp" />
@@ -43,6 +43,7 @@
     <ClInclude Include="src\Animation\Animation.h" />
     <ClInclude Include="src\Animation\SeqAnimation.h" />
     <ClInclude Include="src\Animation\SpriteAnimation.h" />
+    <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\TextureManager.h" />
@@ -117,7 +118,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser;D:\ForVisualCode\GameBodoi\GameBodoi\src\XML;D:\ForVisualCode\GameBodoi\GameBodoi\src\Timer;D:\ForVisualCode\GameBodoi\GameBodoi\src\Input;D:\ForVisualCode\GameBodoi\GameBodoi\src\Animation;D:\ForVisualCode\GameBodoi\GameBodoi\src\Object;D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics;D:\ForVisualCode\GameBodoi\GameBodoi\src\Graphics;D:\ForVisualCode\GameBodoi\GameBodoi\src\Game;D:\ForVisualCode\SDL_ttf\SDL2_ttf-2.24.0\include;D:\ForVisualCode\SDL_Mixer\SDL2_mixer-2.8.1\include;D:\ForVisualCode\SDL_Image\SDL2_image-2.8.5\include;D:\ForVisualCode\SDL2-2\SDL2-2.32.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\ForVisualCode\GameBodoi\GameBodoi\src\Factory;D:\ForVisualCode\GameBodoi\GameBodoi\src\MapParser;D:\ForVisualCode\GameBodoi\GameBodoi\src\XML;D:\ForVisualCode\GameBodoi\GameBodoi\src\Timer;D:\ForVisualCode\GameBodoi\GameBodoi\src\Input;D:\ForVisualCode\GameBodoi\GameBodoi\src\Animation;D:\ForVisualCode\GameBodoi\GameBodoi\src\Object;D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics;D:\ForVisualCode\GameBodoi\GameBodoi\src\Graphics;D:\ForVisualCode\GameBodoi\GameBodoi\src\Game;D:\ForVisualCode\SDL_ttf\SDL2_ttf-2.24.0\include;D:\ForVisualCode\SDL_Mixer\SDL2_mixer-2.8.1\include;D:\ForVisualCode\SDL_Image\SDL2_image-2.8.5\include;D:\ForVisualCode\SDL2-2\SDL2-2.32.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\ForVisualCode\SDL_ttf\SDL2_ttf-2.24.0\lib\x64;D:\ForVisualCode\SDL_Mixer\SDL2_mixer-2.8.1\lib\x64;D:\ForVisualCode\SDL_Image\SDL2_image-2.8.5\lib\x64;D:\ForVisualCode\SDL2-2\SDL2-2.32.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

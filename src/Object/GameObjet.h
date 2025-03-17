@@ -43,6 +43,8 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
+
+	Point* GetOrigin() { return m_Origin; }
 protected:
 	Transform* m_Transform;
 

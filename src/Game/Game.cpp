@@ -5,11 +5,12 @@
 #include "Timer.h"
 #include "Camera.h"
 #include "Enemy.h"
+#include "ObjectFactory.h"
 
 
 Game* Game::s_Instance = nullptr;
-Warrior* Knight = nullptr;
-Enemy* Slime = nullptr;
+//Warrior* Knight = nullptr;
+//Enemy* Slime = nullptr;
 
 bool Game::Init()
 {
@@ -39,19 +40,19 @@ bool Game::Init()
 	}
 	m_Map = MapParser::GetInstance()->GetMap("MAP");
 
-	/*TextureManager::GetInstance()->Load("dragon", "assets/Dragon Tyrant.png");
-	TextureManager::GetInstance()->Load("IdleKnight", "assets/IdleKnight.png");
-	TextureManager::GetInstance()->Load("RunKnight", "assets/RunKnight.png");
-	TextureManager::GetInstance()->Load("JumpKnight", "assets/JumpKnight.png");
-	TextureManager::GetInstance()->Load("FallKnight", "assets/FallKnight.png");
-	TextureManager::GetInstance()->Load("Attack1Knight", "assets/Attack1Knight.png");
-	TextureManager::GetInstance()->Load("CrouchKnight", "assets/CrouchKnight.png");*/
-
 	TextureManager::GetInstance()->ParseTextures("assets/textures.tml");
 
-	Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
-	Slime = new Enemy(new Properties("SlimeIdle", 300, 100, 32, 25));
+	//Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
+	//Slime = new Enemy(new Properties("SlimeIdle", 300, 100, 32, 25));
 
+	Properties* props = new Properties("IdleKnight", 50, 100, 120, 80);
+	GameObject* Knight = ObjectFactory::GetInstance()->CreateObject("PLAYER", props);
+
+	props = new Properties("SlimeIdle", 300, 100, 32, 25);
+	GameObject* Slime = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+
+	m_GameObjects.push_back(Knight);
+	m_GameObjects.push_back(Slime);
 
 	Camera::GetInstance()->SetTarget(Knight->GetOrigin());
 
@@ -66,8 +67,10 @@ void Game::Update()
 	
 	m_Map->Update();
 	
-	Knight->Update(dt);
-	Slime->Update(dt);
+	for (int i = 0; i < m_GameObjects.size(); i++)
+	{
+		m_GameObjects[i]->Update(dt);
+	}
 	
 	Camera::GetInstance()->Update(dt);
 }
@@ -86,8 +89,10 @@ void Game::Render()
 
 	m_Map->Render();
 	
-	Knight->Draw();
-	Slime->Draw();
+	for (int i = 0; i < m_GameObjects.size(); i++)
+	{
+		m_GameObjects[i]->Draw();
+	}
 	SDL_RenderPresent(m_Renderer);
 }
 

@@ -2,6 +2,9 @@
 #include "Input.h"
 #include "Camera.h"
 #include "Game.h"
+#include "ObjectFactory.h"
+
+static Registrar<Warrior> registrar("PLAYER");
 
 Warrior::Warrior(Properties* props) : GameObject(props)
 {
@@ -24,10 +27,10 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	m_Collider->SetBuffer(-40, -40, 100, 40);
 }
 
-Point* Warrior::GetOrigin()
-{
-	return m_Origin;
-}
+//Point* Warrior::GetOrigin()
+//{
+//	return m_Origin;
+//}
 
 
 void Warrior::Update(float dt)

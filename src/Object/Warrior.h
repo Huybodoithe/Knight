@@ -20,8 +20,6 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 
-	Point* GetOrigin();
-
 private:
 	void AnimationState();
 

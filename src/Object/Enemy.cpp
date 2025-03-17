@@ -2,6 +2,9 @@
 #include "CollisionHandler.h"
 #include "Camera.h"
 #include <iostream>
+#include "ObjectFactory.h"
+
+static Registrar<Enemy> registrar("ENEMY");
 
 Enemy::Enemy(Properties* props) : GameObject(props)
 {
