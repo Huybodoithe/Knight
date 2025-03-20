@@ -3,6 +3,7 @@
 #include "Camera.h"
 #include "Game.h"
 #include "ObjectFactory.h"
+#include "Enemy.h"
 
 static Registrar<Warrior> registrar("PLAYER");
 
@@ -116,6 +117,31 @@ void Warrior::Update(float dt)
 		m_AttackTime = ATTACK_TIME;
 	}
 	
+	if (m_IsAttacking)
+	{
+		SDL_Rect attackBox;
+		if (m_Flip == SDL_FLIP_NONE)
+		{
+			attackBox = { int(m_Transform->X) + 80, int(m_Transform->Y), 40, 80 };
+		}
+		else
+		{
+			attackBox = { int(m_Transform->X), int(m_Transform->Y), 40, 80 };
+		}
+
+		for (auto obj : Game::GetInstance()->GetGameObjects())
+		{
+			if (obj == this) continue;
+
+			Enemy* enemy = dynamic_cast<Enemy*>(obj);
+			if (CollisonHandler::GetInstance()->CheckCollision(attackBox, enemy->GetCollider()->Get()))
+			{
+				enemy->SetHurt();
+			}
+		}
+	}
+
+
 	//update x axis
 	m_Rigidbody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
@@ -158,12 +184,7 @@ void Warrior::Draw()
 
 	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
-	Vector2D cam = Camera::GetInstance()->GetPosition();
-	SDL_Rect box = m_Collider->Get();
-	box.x -= cam.X;
-	box.y -= cam.Y;
-	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 255, 255);
-	SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &box);
+	m_Collider->DrawBox();
 }
 
 void Warrior::AnimationState()
@@ -184,7 +205,7 @@ void Warrior::AnimationState()
 	if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 350);
 
 	//attacking
-	if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 60);
+	if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 80);
 }
 
 void Warrior::Clean()

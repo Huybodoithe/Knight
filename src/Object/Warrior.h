@@ -20,6 +20,7 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 
+
 private:
 	void AnimationState();
 
@@ -40,4 +41,5 @@ private:
 
 	Collider* m_Collider;
 	Vector2D m_LastSafePosition;
+
 };

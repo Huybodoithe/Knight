@@ -3,13 +3,13 @@
 MapParser* MapParser::s_Instance = nullptr;
 
 
-bool MapParser::Load()
+GameMap* MapParser::Load(string source)
 {
-	if (!Parse("MAP", "assets/maps/map.tmx"))
-	{
-		return false;
-	}
-	return true;
+	GameMap* Map;
+	Parse("MAP", source);
+	
+	Map = MapParser::GetInstance()->GetMap("MAP");
+	return Map;
 }
 
 //Phan tich file tmx, phan tich cac lop cua 1 level, tao cac lop thanh 1 gamemap va them no vao m_MapDict

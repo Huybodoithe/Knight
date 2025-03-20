@@ -25,4 +25,9 @@
 	<texture id="SlimeDie2" source="assets/Slime/SlimeDie2.png"/>
 	<texture id="SlimeDie3" source="assets/Slime/SlimeDie3.png"/>
 
+	<texture id="SlimeHurt0" source="assets/Slime/SlimeHurt0.png"/>
+	<texture id="SlimeHurt1" source="assets/Slime/SlimeHurt1.png"/>
+	<texture id="SlimeHurt2" source="assets/Slime/SlimeHurt2.png"/>
+	<texture id="SlimeHurt3" source="assets/Slime/SlimeHurt3.png"/>
+
 </textures>

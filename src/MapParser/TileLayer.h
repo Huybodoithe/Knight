@@ -27,6 +27,8 @@ public:
 
 	inline TileMap GetTilemap() { return m_Tilemap; }
 
+	inline int GetTileSize() { return m_TileSize; }
+
 private:
 	int m_TileSize;
 	int m_RowCount, m_ColCount;

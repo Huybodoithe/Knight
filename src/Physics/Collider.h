@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
-
+#include "Game.h"
+#include "Camera.h"
 //componet box collider
 class Collider
 {
@@ -16,6 +17,16 @@ public:
 			width - m_Buffer.w,
 			height - m_Buffer.h
 		};
+	}
+
+	void DrawBox()
+	{
+		Vector2D cam = Camera::GetInstance()->GetPosition();
+		SDL_Rect box = m_Box;
+		box.x -= cam.X;
+		box.y -= cam.Y;
+		SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 255, 255);
+		SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &box);
 	}
 private:
 

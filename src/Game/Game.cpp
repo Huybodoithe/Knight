@@ -9,8 +9,6 @@
 
 
 Game* Game::s_Instance = nullptr;
-//Warrior* Knight = nullptr;
-//Enemy* Slime = nullptr;
 
 bool Game::Init()
 {
@@ -34,7 +32,7 @@ bool Game::Init()
 		return false;
 	}
 	
-	if (!MapParser::GetInstance()->Load())
+	if (!MapParser::GetInstance()->Load("assets/maps/map.tmx"))
 	{
 		cout << "Failed to load map" << endl;
 	}

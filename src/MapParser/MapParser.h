@@ -10,7 +10,7 @@
 class MapParser
 {
 public:
-	bool Load();
+	GameMap* Load(string source);
 	void Clean();
 
 	inline GameMap* GetMap(string id) { return m_MapDict[id]; }

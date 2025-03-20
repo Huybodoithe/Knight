@@ -8,6 +8,8 @@ static Registrar<Enemy> registrar("ENEMY");
 
 Enemy::Enemy(Properties* props) : GameObject(props)
 {
+	m_IsHurt = false;
+	m_HurtTime = HURTTIME;
 
 	m_Rigidbody = new Rigidbody();
 	m_Rigidbody->SetGravity(2.0f);
@@ -22,10 +24,13 @@ Enemy::Enemy(Properties* props) : GameObject(props)
 void Enemy::Draw()
 {
 	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 1, 1, m_Flip);
+
+	m_Collider->DrawBox();
 }
 
 void Enemy::Update(float dt)
 {
+	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 	//update x axis
 	m_Rigidbody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
@@ -45,6 +50,16 @@ void Enemy::Update(float dt)
 	{
 		m_Transform->Y = m_LastSafePosition.Y;
 	}
+
+	if (m_IsHurt)
+	{
+		m_HurtTime -= dt;
+		if (m_HurtTime <= 0)
+		{
+			m_IsHurt = false;
+			m_Animation->SetCurrentSeq("SlimeIdle");
+		}
+	}
 	
 	m_Animation->Update(dt);
 
@@ -53,6 +68,13 @@ void Enemy::Update(float dt)
 		m_Animation->SetRepeat(true);
 		m_Animation->SetCurrentSeq("SlimeIdle");
 	}
+}
+
+void Enemy::SetHurt()
+{
+	m_IsHurt = true;
+	m_HurtTime = HURTTIME;
+	m_Animation->SetCurrentSeq("SlimeHurt");
 }
 
 void Enemy::Clean()

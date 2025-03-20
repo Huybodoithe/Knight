@@ -4,6 +4,7 @@
 #include "SDL_image.h"
 #include "MapParser.h"
 #include "GameObjet.h"
+#include "GameState.h"
 
 using namespace std;
 
@@ -27,11 +28,14 @@ public:
 	void Clean();
 	void Quit();
 
+	void PopState();
+	void PushState(GameState* current);
+	void ChangeState(GameState* target);
+
 	bool isRunning() { return m_IsRunning; }
-
 	inline SDL_Renderer* GetRenderer() { return m_Renderer; }
-
 	inline GameMap* GetMap() { return m_Map; }
+	inline vector<GameObject*> GetGameObjects() { return m_GameObjects; }
 private:
 
 	static Game* s_Instance;
