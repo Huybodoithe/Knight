@@ -9,13 +9,16 @@ static Registrar<Warrior> registrar("PLAYER");
 
 Warrior::Warrior(Properties* props) : GameObject(props)
 {
+	m_LastAnimID = "IdleKnight";
+	m_NewAnimID = "IdleKnight";
+
 	m_IsRunning = false;
 	m_IsJumping = false;
 	m_IsFalling = false;
 	m_IsGrounded = false;
 	m_IsAttacking = false;
 	m_IsCrouching = false;
-
+	
 	m_SpriteAnimation = new SpriteAnimation();
 	m_Rigidbody = new Rigidbody();
 	m_Rigidbody->SetGravity(3.0f);
@@ -23,21 +26,15 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	m_JumpTime = JUMPTIME;
 	m_JumpForce = JUMPFORCE;
 	m_AttackTime = ATTACK_TIME;
+	m_Cooldown = 0;
 
 	m_Collider = new Collider();
 	m_Collider->SetBuffer(-40, -40, 100, 40);
 }
 
-//Point* Warrior::GetOrigin()
-//{
-//	return m_Origin;
-//}
-
-
 void Warrior::Update(float dt)
 {
 	m_Rigidbody->UnSetForce();
-	m_SpriteAnimation->SetProps(m_TextureID, 0, 10, 80);
 
 	//sang phai
 	if (Input::GetInstance()->GetAxisKey(HORIZONTAL) == FORWARD && !m_IsAttacking)
@@ -71,10 +68,11 @@ void Warrior::Update(float dt)
 	}
 
 	//attack
-	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_K))
+	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_K) && m_Cooldown <= 0)
 	{
 		m_Rigidbody->UnSetForce();
 		m_IsAttacking = true;
+		m_Cooldown = COOLDOWN_TIME;
 	}
 
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_IsGrounded)
@@ -117,6 +115,7 @@ void Warrior::Update(float dt)
 		m_AttackTime = ATTACK_TIME;
 	}
 	
+	//va cham attack
 	if (m_IsAttacking)
 	{
 		SDL_Rect attackBox;
@@ -133,12 +132,22 @@ void Warrior::Update(float dt)
 		{
 			if (obj == this) continue;
 
-			Enemy* enemy = dynamic_cast<Enemy*>(obj);
+			Enemy* enemy = dynamic_cast<Enemy*>(obj); //lay component enemy
+
+			if (m_Cooldown != COOLDOWN_TIME) continue; //cai nay de tan cong thi chi tinh 1 lan damage
+
 			if (CollisonHandler::GetInstance()->CheckCollision(attackBox, enemy->GetCollider()->Get()))
 			{
-				enemy->SetHurt();
+				enemy->SetHurt(); //animation hurt
+				enemy->TakeDamage(DAMAGE); //giam mau enemy
 			}
 		}
+	}
+
+	//cooldown
+	if (m_Cooldown > 0)
+	{
+		m_Cooldown -= dt;
 	}
 
 
@@ -170,11 +179,10 @@ void Warrior::Update(float dt)
 	m_Origin->X = m_Transform->X + m_Width / 2;
 	m_Origin->Y = m_Transform->Y + m_Height / 2;
 
+	
 	AnimationState();
 
-	cout << dt << endl;
 	m_SpriteAnimation->Update(dt);
-
 	
 }
 
@@ -189,23 +197,41 @@ void Warrior::Draw()
 
 void Warrior::AnimationState()
 {
-	//idling
-	m_SpriteAnimation->SetProps("IdleKnight", 0, 10, 80);
+	m_NewAnimID = "IdleKnight";
+	if (m_IsRunning) m_NewAnimID = "RunKnight";
+	if (m_IsCrouching) m_NewAnimID = "CrouchKnight";
+	if (m_IsJumping) m_NewAnimID = "JumpKnight";
+	if (m_IsAttacking) m_NewAnimID = "Attack1Knight";
+	if (m_IsFalling) m_NewAnimID = "FallKnight";
 
-	//running
-	if(m_IsRunning) m_SpriteAnimation->SetProps("RunKnight", 0, 10, 80);
+	if (m_NewAnimID != m_LastAnimID)
+	{
+		//idling
+		m_SpriteAnimation->SetProps("IdleKnight", 0, 10, 80);
 
-	//crouching
-	if (m_IsCrouching) m_SpriteAnimation->SetProps("CrouchKnight", 0, 1, 200);
+		//running
+		if (m_IsRunning) m_SpriteAnimation->SetProps("RunKnight", 0, 10, 80);
 
-	//jumping
-	if (m_IsJumping) m_SpriteAnimation->SetProps("JumpKnight", 0, 3, 200);
+		//crouching
+		if (m_IsCrouching) m_SpriteAnimation->SetProps("CrouchKnight", 0, 1, 200);
 
-	//falling
-	if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 350);
+		//jumping
+		if (m_IsJumping) m_SpriteAnimation->SetProps("JumpKnight", 0, 3, 200);
 
-	//attacking
-	if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 80);
+		//attacking
+		if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 80);
+
+		//falling
+		if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 350);
+
+		m_LastAnimID = m_NewAnimID;
+
+		
+	}
+	
+
+	
+	
 }
 
 void Warrior::Clean()

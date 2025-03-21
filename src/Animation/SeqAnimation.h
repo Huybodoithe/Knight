@@ -29,4 +29,6 @@ public:
 private:
 	Sequence m_CurrentSeq;
 	map<string, Sequence> m_SeqMap;
+
+	Uint32 m_StartTime;
 };

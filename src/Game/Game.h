@@ -36,6 +36,8 @@ public:
 	inline SDL_Renderer* GetRenderer() { return m_Renderer; }
 	inline GameMap* GetMap() { return m_Map; }
 	inline vector<GameObject*> GetGameObjects() { return m_GameObjects; }
+
+	void RemoveGameObject(GameObject* obj);
 private:
 
 	static Game* s_Instance;

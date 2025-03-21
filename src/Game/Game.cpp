@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include "TextureManager.h"
 #include "Warrior.h"
 #include "Input.h"
@@ -40,8 +40,6 @@ bool Game::Init()
 
 	TextureManager::GetInstance()->ParseTextures("assets/textures.tml");
 
-	//Knight = new Warrior(new Properties("IdleKnight", 50, 100, 120, 80));
-	//Slime = new Enemy(new Properties("SlimeIdle", 300, 100, 32, 25));
 
 	Properties* props = new Properties("IdleKnight", 50, 100, 120, 80);
 	GameObject* Knight = ObjectFactory::GetInstance()->CreateObject("PLAYER", props);
@@ -94,6 +92,16 @@ void Game::Render()
 	SDL_RenderPresent(m_Renderer);
 }
 
+void Game::RemoveGameObject(GameObject* obj)
+{
+	auto it = std::find(m_GameObjects.begin(), m_GameObjects.end(), obj);
+	if (it != m_GameObjects.end())
+	{
+		delete* it; // Giải phóng bộ nhớ
+		m_GameObjects.erase(it); // Xóa khỏi danh sách
+	}
+}
+
 void Game::Clean()
 {
 	SDL_DestroyRenderer(m_Renderer);
@@ -110,3 +118,5 @@ void Game::Quit()
 {
 	m_IsRunning = false;
 }
+
+

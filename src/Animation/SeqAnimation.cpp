@@ -2,7 +2,7 @@
 #include "tinyxml.h"
 #include "TextureManager.h"
 #include <iostream>
-
+#include "SDL.h"
 
 SeqAnimation::SeqAnimation(bool repeat) : Animation(repeat)
 {
@@ -13,7 +13,7 @@ void SeqAnimation::Update(float dt)
 	if (m_Repeat || !m_IsEnded)
 	{
 		m_IsEnded = false;
-		m_CurrentFrame = (SDL_GetTicks() / m_CurrentSeq.Speed) % m_CurrentSeq.FrameCount;
+		m_CurrentFrame = ((SDL_GetTicks()-m_StartTime) / m_CurrentSeq.Speed) % m_CurrentSeq.FrameCount;
 	}
 
 	if (!m_Repeat && m_CurrentFrame == m_CurrentSeq.FrameCount - 1)
@@ -52,6 +52,7 @@ void SeqAnimation::Parse(string source)
 
 void SeqAnimation::SetCurrentSeq(string seqID)
 {
+	m_StartTime = SDL_GetTicks();
 	if (m_SeqMap.count(seqID) > 0)
 	{
 		m_CurrentSeq = m_SeqMap[seqID];

@@ -20,10 +20,14 @@ public:
 	void SetSpriteRow(int row) { m_SpriteRow = row; }
 	void IncreaseSpriteRow() { m_SpriteRow++; }
 	void DecreaseSpriteRow() { m_SpriteRow--; }
+
+	string GetTextureID() { return m_TextureID; }
 protected:
 
 	int m_Speed;
 	int m_SpriteRow;
 	int m_FrameCount;
 	string m_TextureID;
+
+	Uint32 m_StartTime;
 };

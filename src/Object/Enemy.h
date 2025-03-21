@@ -5,7 +5,10 @@
 #include "SeqAnimation.h"
 #include "Rigidbody.h"
 
-#define HURTTIME 0.5f
+#define HURTTIME 0.6f
+#define DIETIME 0.6f
+
+#define MAXHP 80
 
 class Enemy : public GameObject
 {
@@ -19,7 +22,9 @@ public:
 	inline Collider* GetCollider() { return m_Collider; }
 	
 	void SetHurt();
-
+	void TakeDamage(int damage);
+	void Die();
+	bool IsDead() { return m_IsDead; }
 private:
 	Collider* m_Collider;
 	Rigidbody* m_Rigidbody;
@@ -28,5 +33,13 @@ private:
 
 	bool m_IsHurt;
 	float m_HurtTime;
+
+	bool m_IsDying;
+	bool m_IsDead;
+	float m_DieTime;
+
+
+	int m_Hp;
+
 
 };

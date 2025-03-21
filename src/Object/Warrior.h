@@ -10,7 +10,10 @@
 #define JUMPFORCE 10.0f
 
 #define RUN_FORCE 5.0f
-#define ATTACK_TIME 0.2f
+#define ATTACK_TIME 0.32f
+
+#define COOLDOWN_TIME 0.6f
+#define DAMAGE 20
 
 class Warrior : public GameObject
 {
@@ -38,8 +41,11 @@ private:
 	float m_JumpTime;
 	float m_JumpForce;
 	float m_AttackTime;
+	float m_Cooldown;
 
 	Collider* m_Collider;
 	Vector2D m_LastSafePosition;
 
+	string m_LastAnimID;
+	string m_NewAnimID;
 };

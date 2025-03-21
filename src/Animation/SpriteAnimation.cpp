@@ -6,7 +6,7 @@ SpriteAnimation::SpriteAnimation(bool repeat) : Animation(repeat)
 
 void SpriteAnimation::Update(float dt)
 {
-	m_CurrentFrame = (SDL_GetTicks() / m_Speed) % m_FrameCount;
+	m_CurrentFrame = ((SDL_GetTicks()-m_StartTime) / m_Speed) % m_FrameCount;
 }
 
 void SpriteAnimation::Draw(float x, float y, int spriteWidth, int spriteHeight, float xScale, float yScale, SDL_RendererFlip flip)
@@ -20,4 +20,6 @@ void SpriteAnimation::SetProps(string textureID, int spriteRow, int frameCount, 
 	m_SpriteRow = spriteRow;
 	m_FrameCount = frameCount;
 	m_Speed = speed;
+
+	m_StartTime = SDL_GetTicks();
 }
