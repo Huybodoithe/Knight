@@ -9,6 +9,8 @@ static Registrar<Warrior> registrar("PLAYER");
 
 Warrior::Warrior(Properties* props) : GameObject(props)
 {
+	m_Hp = WARRIOR_MAX_HP;
+
 	m_LastAnimID = "IdleKnight";
 	m_NewAnimID = "IdleKnight";
 
@@ -25,15 +27,22 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 
 	m_JumpTime = JUMPTIME;
 	m_JumpForce = JUMPFORCE;
-	m_AttackTime = ATTACK_TIME;
+	m_AttackTime = WARRIOR_ATTACK_TIME;
 	m_Cooldown = 0;
 
 	m_Collider = new Collider();
-	m_Collider->SetBuffer(-40, -40, 100, 40);
+	m_Collider->SetBuffer(-50, -40, 100, 40);
 }
 
 void Warrior::Update(float dt)
 {
+	//dead
+	if (m_Hp <= 0)
+	{
+		m_IsDead = true;
+		return;
+	}
+
 	m_Rigidbody->UnSetForce();
 
 	//sang phai
@@ -72,7 +81,7 @@ void Warrior::Update(float dt)
 	{
 		m_Rigidbody->UnSetForce();
 		m_IsAttacking = true;
-		m_Cooldown = COOLDOWN_TIME;
+		m_Cooldown = WARROR_ATTACK_COOLDOWN_TIME;
 	}
 
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_IsGrounded)
@@ -112,21 +121,22 @@ void Warrior::Update(float dt)
 	else
 	{
 		m_IsAttacking = false;
-		m_AttackTime = ATTACK_TIME;
+		m_AttackTime = WARRIOR_ATTACK_TIME;
 	}
 	
 	//va cham attack
 	if (m_IsAttacking)
 	{
-		SDL_Rect attackBox;
 		if (m_Flip == SDL_FLIP_NONE)
 		{
-			attackBox = { int(m_Transform->X) + 80, int(m_Transform->Y), 40, 80 };
+			m_AttakBox = { m_Collider->Get().x + 80, m_Collider->Get().y, 40, 40};
 		}
 		else
 		{
-			attackBox = { int(m_Transform->X), int(m_Transform->Y), 40, 80 };
+			m_AttakBox = { m_Collider->Get().x-45, m_Collider->Get().y, 40, 40 };
 		}
+
+		
 
 		for (auto obj : Game::GetInstance()->GetGameObjects())
 		{
@@ -134,12 +144,12 @@ void Warrior::Update(float dt)
 
 			Enemy* enemy = dynamic_cast<Enemy*>(obj); //lay component enemy
 
-			if (m_Cooldown != COOLDOWN_TIME) continue; //cai nay de tan cong thi chi tinh 1 lan damage
+			if (m_Cooldown != WARROR_ATTACK_COOLDOWN_TIME) continue; //cai nay de tan cong thi chi tinh 1 lan damage
 
-			if (CollisonHandler::GetInstance()->CheckCollision(attackBox, enemy->GetCollider()->Get()))
+			if (CollisonHandler::GetInstance()->CheckCollision(m_AttakBox, enemy->GetCollider()->Get()))
 			{
 				enemy->SetHurt(); //animation hurt
-				enemy->TakeDamage(DAMAGE); //giam mau enemy
+				enemy->TakeDamage(WARRIOR_ATTACK_DAMAGE); //giam mau enemy
 			}
 		}
 	}
@@ -148,6 +158,17 @@ void Warrior::Update(float dt)
 	if (m_Cooldown > 0)
 	{
 		m_Cooldown -= dt;
+	}
+
+	//hurting
+	if (m_IsHurting)
+	{
+		m_HurtTime -= dt;
+		if (m_HurtTime <= 0)
+		{
+			m_HurtTime = WARRIOR_HURT_TIME;
+			m_IsHurting = false;
+		}
 	}
 
 
@@ -193,6 +214,22 @@ void Warrior::Draw()
 	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
 	m_Collider->DrawBox();
+
+	Vector2D cam = Camera::GetInstance()->GetPosition();
+	SDL_Rect box = m_Collider->Get();
+	SDL_Rect hpBar = { box.x - cam.X, box.y - 10 - cam.Y, m_Hp / 2, 5 };
+	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 0, 255);
+	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &hpBar);
+	
+	if (m_IsAttacking)
+	{
+		box = m_AttakBox;
+		box.x -= cam.X;
+		box.y -= cam.Y;
+		SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 255, 255);
+		SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &box);
+	}
+	
 }
 
 void Warrior::AnimationState()
@@ -203,6 +240,7 @@ void Warrior::AnimationState()
 	if (m_IsJumping) m_NewAnimID = "JumpKnight";
 	if (m_IsAttacking) m_NewAnimID = "Attack1Knight";
 	if (m_IsFalling) m_NewAnimID = "FallKnight";
+	if (m_IsHurting) m_NewAnimID = "HurtKnight";
 
 	if (m_NewAnimID != m_LastAnimID)
 	{
@@ -222,19 +260,31 @@ void Warrior::AnimationState()
 		if (m_IsAttacking) m_SpriteAnimation->SetProps("Attack1Knight", 0, 4, 80);
 
 		//falling
-		if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 350);
+		if (m_IsFalling) m_SpriteAnimation->SetProps("FallKnight", 0, 3, 200);
+
+		//hurting
+		if (m_IsHurting) {
+			m_SpriteAnimation->SetProps("HurtKnight", 0, 1, 100);
+		}
+
 
 		m_LastAnimID = m_NewAnimID;
-
-		
 	}
-	
-
-	
-	
 }
+
+
+void Warrior::SetHurt()
+{
+	m_IsHurting = true;
+	m_HurtTime = WARRIOR_HURT_TIME;
+}
+
+void Warrior::TakeDamage(int damage)
+{
+	m_Hp -= damage;
+}
+
 
 void Warrior::Clean()
 {
 }
-

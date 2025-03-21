@@ -5,10 +5,14 @@
 #include "SeqAnimation.h"
 #include "Rigidbody.h"
 
-#define HURTTIME 0.6f
-#define DIETIME 0.6f
+#define ENEMY_HURT_TIME 0.6f
+#define ENEMY_DIE_TIME 0.6f
 
 #define MAXHP 80
+#define ENEMY_ATTACK_COOLDOWN_TIME 2.0f
+
+#define ENEMY_ATTACK_TIME 0.5f
+#define ENEMY_ATTACK_DAMAGE 10
 
 class Enemy : public GameObject
 {
@@ -31,15 +35,17 @@ private:
 	SeqAnimation* m_Animation;
 	Vector2D m_LastSafePosition;
 
-	bool m_IsHurt;
+	bool m_IsHurting;
 	float m_HurtTime;
 
 	bool m_IsDying;
 	bool m_IsDead;
 	float m_DieTime;
 
-
 	int m_Hp;
 
+	float m_Cooldown;
+	bool m_IsAttacking;
+	float m_AttakTime;
 
 };

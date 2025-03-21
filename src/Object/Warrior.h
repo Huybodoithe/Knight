@@ -10,11 +10,14 @@
 #define JUMPFORCE 10.0f
 
 #define RUN_FORCE 5.0f
-#define ATTACK_TIME 0.32f
+#define WARRIOR_ATTACK_TIME 0.32f
 
-#define COOLDOWN_TIME 0.6f
-#define DAMAGE 20
+#define WARROR_ATTACK_COOLDOWN_TIME 0.6f
+#define WARRIOR_ATTACK_DAMAGE 20
 
+#define WARRIOR_MAX_HP 100
+
+#define WARRIOR_HURT_TIME 0.15f
 class Warrior : public GameObject
 {
 public:
@@ -23,11 +26,18 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 
+	Collider* GetCollider() { return m_Collider; }
 
+	void SetHurt();
+	void TakeDamage(int damage);
+	bool IsDead() { return m_IsDead; }
 private:
 	void AnimationState();
 
 private:
+	int m_Hp;
+	bool m_IsDead;
+
 	SpriteAnimation* m_SpriteAnimation;
 	Rigidbody* m_Rigidbody;
 	
@@ -37,15 +47,21 @@ private:
 	bool m_IsGrounded;
 	bool m_IsAttacking;
 	bool m_IsCrouching;
+	bool m_IsHurting;
+
 
 	float m_JumpTime;
 	float m_JumpForce;
 	float m_AttackTime;
 	float m_Cooldown;
+	float m_HurtTime;
 
 	Collider* m_Collider;
 	Vector2D m_LastSafePosition;
 
 	string m_LastAnimID;
 	string m_NewAnimID;
+
+
+	SDL_Rect m_AttakBox;
 };

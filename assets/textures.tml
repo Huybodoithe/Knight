@@ -6,6 +6,7 @@
 	<texture id="FallKnight" source="assets/FallKnight.png"/>
 	<texture id="Attack1Knight" source="assets/Attack1Knight.png"/>
 	<texture id="CrouchKnight" source="assets/CrouchKnight.png"/>
+	<texture id="HurtKnight" source="assets/HurtKnight.png"/>
 
 	<texture id="dragon" source="assets/Dragon Tyrant.png"/>
 

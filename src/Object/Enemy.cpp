@@ -4,6 +4,8 @@
 #include <iostream>
 #include "ObjectFactory.h"
 #include "Game.h"
+#include "Warrior.h"
+
 
 static Registrar<Enemy> registrar("ENEMY");
 
@@ -11,16 +13,20 @@ Enemy::Enemy(Properties* props) : GameObject(props)
 {
 	m_Hp = MAXHP;
 
-	m_IsHurt = false;
-	m_HurtTime = HURTTIME;
+	m_IsHurting = false;
+	m_HurtTime = ENEMY_HURT_TIME;
 	m_IsDying = false;
-	m_DieTime = DIETIME;
+	m_DieTime = ENEMY_DIE_TIME;
 	m_IsDead = false;
+	m_Cooldown = 0;
+	m_IsAttacking = false;
+	m_AttakTime = ENEMY_ATTACK_TIME;
 
 	m_Rigidbody = new Rigidbody();
 	m_Rigidbody->SetGravity(2.0f);
 
 	m_Collider = new Collider();
+	m_Collider->SetBuffer(-5, -5, 10, 5);
 
 	m_Animation = new SeqAnimation(false);
 	m_Animation->Parse("assets/animations.tml");
@@ -34,7 +40,8 @@ void Enemy::Draw()
 	m_Collider->DrawBox();
 
 	Vector2D cam = Camera::GetInstance()->GetPosition();
-	SDL_Rect hpBar = { int(m_Transform->X) - cam.X, int(m_Transform->Y) - 10-cam.Y, m_Hp/2, 5 };
+	SDL_Rect box = m_Collider->Get();
+	SDL_Rect hpBar = { box.x - cam.X, box.y - 10 - cam.Y, m_Hp / 2, 5 };
 	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &hpBar);
 }
@@ -63,20 +70,49 @@ void Enemy::Update(float dt)
 	}
 
 	//hurt
-	if (m_IsHurt)
+	if (m_IsHurting)
 	{
 		m_HurtTime -= dt;
 		if (m_HurtTime <= 0)
 		{
-			m_IsHurt = false;
+			m_IsHurting = false;
 			m_Animation->SetCurrentSeq("SlimeIdle");
 		}
 	}
 
-	//die
+	//attack
+	Warrior* warrior = dynamic_cast<Warrior*>(Game::GetInstance()->GetGameObjects()[0]);
+	if (CollisonHandler::GetInstance()->CheckCollision(m_Collider->Get(), warrior->GetCollider()->Get()))
+	{
+		if (m_Cooldown <= 0)
+		{
+			m_IsAttacking = true;
+			m_Animation->SetCurrentSeq("SlimeAttack");
+			m_Cooldown = ENEMY_ATTACK_COOLDOWN_TIME;
+			
+			warrior->SetHurt();
+			warrior->TakeDamage(ENEMY_ATTACK_DAMAGE);
+		}
+	}
 
+	if (m_IsAttacking)
+	{
+		m_AttakTime -= dt;
+		if (m_AttakTime <= 0)
+		{
+			m_IsAttacking = false;
+			m_Animation->SetCurrentSeq("SlimeIdle");
+			m_AttakTime = ENEMY_ATTACK_TIME;
+		}
+	}
+	if (m_Cooldown > 0)
+	{
+		m_Cooldown -= dt;
+	}
+
+	//die
 	if (!m_IsDying && m_Hp <= 0) Die();
-	
+
 	if (m_IsDying)
 	{
 		m_DieTime -= dt;
@@ -107,8 +143,8 @@ void Enemy::Update(float dt)
 
 void Enemy::SetHurt()
 {
-	m_IsHurt = true;
-	m_HurtTime = HURTTIME;
+	m_IsHurting = true;
+	m_HurtTime = ENEMY_HURT_TIME;
 	m_Animation->SetCurrentSeq("SlimeHurt");
 }
 
