@@ -5,6 +5,7 @@
 #include "Point.h"
 #include "Collider.h"
 #include "CollisionHandler.h"
+#include "GameStateMachine.h"
 
 #define JUMPTIME 5.0f
 #define JUMPFORCE 10.0f
@@ -15,7 +16,7 @@
 #define WARROR_ATTACK_COOLDOWN_TIME 0.6f
 #define WARRIOR_ATTACK_DAMAGE 20
 
-#define WARRIOR_MAX_HP 1000
+#define WARRIOR_MAX_HP 20
 
 #define WARRIOR_HURT_TIME 0.15f
 class Warrior : public GameObject
@@ -30,13 +31,13 @@ public:
 
 	void SetHurt();
 	void TakeDamage(int damage);
-	bool IsDead() { return m_IsDead; }
+	
 private:
 	void AnimationState();
 
 private:
 	int m_Hp;
-	bool m_IsDead;
+	
 
 	SpriteAnimation* m_SpriteAnimation;
 	Rigidbody* m_Rigidbody;

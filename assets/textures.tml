@@ -33,5 +33,13 @@
 
 	<texture id="StartButtonDefault" source="assets/Button/StartButtonDefault.png"/>
 	<texture id="StartButtonHover" source="assets/Button/StartButtonHover.png"/>
+	<texture id="ContinueButtonDefault" source="assets/Button/ContinueButtonDefault.png"/>
+	<texture id="ContinueButtonHover" source="assets/Button/ContinueButtonHover.png"/>
+	<texture id="QuitButtonDefault" source="assets/Button/QuitButtonDefault.png"/>
+	<texture id="QuitButtonHover" source="assets/Button/QuitButtonHover.png"/>
+	<texture id="PauseButtonDefault" source="assets/Button/PauseButtonDefault.png"/>
+	<texture id="PauseButtonHover" source="assets/Button/PauseButtonHover.png"/>
+
+	<texture id="Panel" source="assets/Panel.png"/>
 
 </textures>

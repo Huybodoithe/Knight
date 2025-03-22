@@ -45,6 +45,8 @@ public:
 	virtual void Clean() = 0;
 
 	Point* GetOrigin() { return m_Origin; }
+
+	bool IsDead() { return m_IsDead; }
 protected:
 	Transform* m_Transform;
 
@@ -55,4 +57,6 @@ protected:
 	string m_Name;
 
 	Point* m_Origin;
+
+	bool m_IsDead;
 };

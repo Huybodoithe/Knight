@@ -4,6 +4,9 @@
 #include "Game.h"
 #include "ObjectFactory.h"
 #include "Enemy.h"
+#include "GameOverState.h"
+#include "PauseState.h"
+
 
 static Registrar<Warrior> registrar("PLAYER");
 

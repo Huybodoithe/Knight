@@ -34,6 +34,7 @@
     <ClCompile Include="src\Physics\CollisionHandler.cpp" />
     <ClCompile Include="src\Object\Warrior.cpp" />
     <ClCompile Include="src\Physics\Rigidbody.cpp" />
+    <ClCompile Include="src\States\GameOverState.cpp" />
     <ClCompile Include="src\States\GameStateMachine.cpp" />
     <ClCompile Include="src\States\MenuState.cpp" />
     <ClCompile Include="src\States\PauseState.cpp" />
@@ -67,6 +68,7 @@
     <ClInclude Include="src\Physics\Rigidbody.h" />
     <ClInclude Include="src\Physics\Transform.h" />
     <ClInclude Include="src\Physics\Vector2D.h" />
+    <ClInclude Include="src\States\GameOverState.h" />
     <ClInclude Include="src\States\GameState.h" />
     <ClInclude Include="src\States\GameStateMachine.h" />
     <ClInclude Include="src\States\MenuState.h" />

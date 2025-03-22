@@ -6,6 +6,8 @@ Button::Button(string textureID_default, string textureID_hover, int x, int y, i
 	:m_TextureID_Default(textureID_default), m_TextureID_Hover(textureID_hover), X(x),Y(y),m_Width(width), m_Height(height)
 {
 	//m_DestRect = { X,Y,m_Width,m_Height };
+	X -= m_Width / 2;
+	Y -= m_Height / 2;
 }
 
 void Button::Update()
@@ -24,5 +26,5 @@ void Button::Render()
 
 bool Button::IsClicked()
 {
-	return (m_IsHovered && Input::GetInstance()->GetKeyDown(SDL_SCANCODE_C));
+	return (m_IsHovered && Input::GetInstance()->IsMouseButtonPressed(RIGHT_MOUSE));
 }

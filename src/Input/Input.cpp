@@ -22,6 +22,13 @@ void Input::Listen()
 	case SDL_KEYUP:
 		KeyUp();
 		break;
+	case SDL_MOUSEBUTTONDOWN:
+		m_MouseButtons[event.button.button - 1] = true;
+		m_MousePressed[event.button.button - 1] = true;
+		break;
+	case SDL_MOUSEBUTTONUP:
+		m_MouseButtons[event.button.button - 1] = false;
+		break;
 	default:
 		break;
 	}
@@ -61,6 +68,21 @@ int Input::GetAxisKey(Axis axis)
 		return 0;
 		break;
 	}
+}
+
+bool Input::IsMouseButtonDown(MouseButton button)
+{
+	return m_MouseButtons[button - 1];
+}
+
+bool Input::IsMouseButtonPressed(MouseButton button)
+{
+	if (m_MousePressed[button - 1])
+	{
+		m_MousePressed[button - 1] = false;
+		return true;
+	}
+	return false;
 }
 
 
