@@ -1,11 +1,12 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
 #include "Warrior.h"
-#include "Input.h"
 #include "Timer.h"
 #include "Camera.h"
 #include "Enemy.h"
 #include "ObjectFactory.h"
+#include "PlayState.h"
+#include "MenuState.h"
 
 
 Game* Game::s_Instance = nullptr;
@@ -31,6 +32,7 @@ bool Game::Init()
 		cout << "Failed to create renderer: " << SDL_GetError() << endl;
 		return false;
 	}
+
 	
 	if (!MapParser::GetInstance()->Load("assets/maps/map.tmx"))
 	{
@@ -45,14 +47,28 @@ bool Game::Init()
 	GameObject* Knight = ObjectFactory::GetInstance()->CreateObject("PLAYER", props);
 
 	props = new Properties("SlimeIdle", 300, 100, 32, 25);
-	GameObject* Slime = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+	GameObject* Slime1 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+	props = new Properties("SlimeIdle", 400, 100, 32, 25);
+	GameObject* Slime2 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+	props = new Properties("SlimeIdle", 700, 100, 32, 25);
+	GameObject* Slime3 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+	props = new Properties("SlimeIdle", 1000, 100, 32, 25);
+	GameObject* Slime4 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
+	props = new Properties("SlimeIdle", 1200, 100, 32, 25);
+	GameObject* Slime5 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
 
 	m_GameObjects.push_back(Knight);
-	m_GameObjects.push_back(Slime);
+	m_GameObjects.push_back(Slime1);
+	m_GameObjects.push_back(Slime2);
+	m_GameObjects.push_back(Slime3);
+	m_GameObjects.push_back(Slime4);
+	m_GameObjects.push_back(Slime5);
 
 	Camera::GetInstance()->SetTarget(Knight->GetOrigin());
 
 	m_IsRunning = true;
+
+	GameStateMachine::GetInstance()->PushState(new MenuState());
 
 	return true;
 }
@@ -61,14 +77,15 @@ void Game::Update()
 {
 	float dt = Timer::GetInstance()->GetDeltaTime();
 	
-	m_Map->Update();
+	GameStateMachine::GetInstance()->Update(dt);
+	/*m_Map->Update();
 	
 	for (int i = 0; i < m_GameObjects.size(); i++)
 	{
 		m_GameObjects[i]->Update(dt);
 	}
 	
-	Camera::GetInstance()->Update(dt);
+	Camera::GetInstance()->Update(dt);*/
 }
 
 void Game::Events()
@@ -81,14 +98,15 @@ void Game::Render()
 	SDL_SetRenderDrawColor(m_Renderer, 255, 255, 255, 255);
 	SDL_RenderClear(m_Renderer);
 
+	GameStateMachine::GetInstance()->Render();
 	//TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801,0.5,0.5);
 
-	m_Map->Render();
+	/*m_Map->Render();
 	
 	for (int i = 0; i < m_GameObjects.size(); i++)
 	{
 		m_GameObjects[i]->Draw();
-	}
+	}*/
 	SDL_RenderPresent(m_Renderer);
 }
 

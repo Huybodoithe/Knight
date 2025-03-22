@@ -15,7 +15,7 @@
 #define WARROR_ATTACK_COOLDOWN_TIME 0.6f
 #define WARRIOR_ATTACK_DAMAGE 20
 
-#define WARRIOR_MAX_HP 100
+#define WARRIOR_MAX_HP 1000
 
 #define WARRIOR_HURT_TIME 0.15f
 class Warrior : public GameObject

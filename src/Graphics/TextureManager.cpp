@@ -81,6 +81,13 @@ void TextureManager::DrawFrame(string id, int x, int y, int width, int height, i
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
+void TextureManager::DrawButton(string id, int x, int y, int width, int height, SDL_RendererFlip flip)
+{
+	SDL_Rect srcRect = { 0,0,width,height };
+	SDL_Rect destRect = { x ,y,width,height };
+	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), m_TextureMap[id],&srcRect ,&destRect , 0, 0, flip);
+}
+
 void TextureManager::DrawTile(string tilesetID, int tileSize, int x, int y, int row, int frame, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect = { tileSize * frame,tileSize * row,tileSize, tileSize };

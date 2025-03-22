@@ -5,6 +5,8 @@
 #include "MapParser.h"
 #include "GameObjet.h"
 #include "GameState.h"
+#include "GameStateMachine.h"
+#include "Input.h"
 
 using namespace std;
 
@@ -28,9 +30,9 @@ public:
 	void Clean();
 	void Quit();
 
-	void PopState();
+	/*void PopState();
 	void PushState(GameState* current);
-	void ChangeState(GameState* target);
+	void ChangeState(GameState* target);*/
 
 	bool isRunning() { return m_IsRunning; }
 	inline SDL_Renderer* GetRenderer() { return m_Renderer; }
@@ -50,4 +52,7 @@ private:
 	GameMap* m_Map;
 
 	vector<GameObject*> m_GameObjects;
+
+
+/*	vector<GameState*> m_States*/;
 };

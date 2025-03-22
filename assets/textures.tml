@@ -31,4 +31,7 @@
 	<texture id="SlimeHurt2" source="assets/Slime/SlimeHurt2.png"/>
 	<texture id="SlimeHurt3" source="assets/Slime/SlimeHurt3.png"/>
 
+	<texture id="StartButtonDefault" source="assets/Button/StartButtonDefault.png"/>
+	<texture id="StartButtonHover" source="assets/Button/StartButtonHover.png"/>
+
 </textures>
