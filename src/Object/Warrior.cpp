@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "GameOverState.h"
 #include "PauseState.h"
+#include "SoundManager.h"
 
 
 static Registrar<Warrior> registrar("PLAYER");
@@ -34,7 +35,7 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	m_Cooldown = 0;
 
 	m_Collider = new Collider();
-	m_Collider->SetBuffer(-50, -40, 100, 40);
+	m_Collider->SetBuffer(-50, -40, 100, 41);
 }
 
 void Warrior::Update(float dt)
@@ -80,18 +81,20 @@ void Warrior::Update(float dt)
 	}
 
 	//attack
-	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_K) && m_Cooldown <= 0)
+	if (Input::GetInstance()->IsMouseButtonPressed(LEFT_MOUSE) && m_Cooldown <= 0)
 	{
 		m_Rigidbody->UnSetForce();
 		m_IsAttacking = true;
 		m_Cooldown = WARROR_ATTACK_COOLDOWN_TIME;
 	}
 
+	//jump
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_IsGrounded)
 	{
 		m_IsJumping = true;
 		m_IsGrounded = false;
 		m_Rigidbody->ApplyForceY(UPWARD * m_JumpForce);
+		SoundManager::GetInstance()->PlayEffect("jump");
 	}
 
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_IsJumping && m_JumpTime > 0)

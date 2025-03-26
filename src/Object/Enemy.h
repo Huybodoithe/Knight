@@ -28,7 +28,6 @@ public:
 	void SetHurt();
 	void TakeDamage(int damage);
 	void Die();
-	/*bool IsDead() { return m_IsDead; }*/
 private:
 	Collider* m_Collider;
 	Rigidbody* m_Rigidbody;
@@ -39,7 +38,6 @@ private:
 	float m_HurtTime;
 
 	bool m_IsDying;
-	/*bool m_IsDead;*/
 	float m_DieTime;
 
 	int m_Hp;

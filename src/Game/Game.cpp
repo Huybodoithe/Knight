@@ -7,6 +7,7 @@
 #include "ObjectFactory.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "SoundManager.h"
 
 
 Game* Game::s_Instance = nullptr;
@@ -34,16 +35,17 @@ bool Game::Init()
 	}
 
 	
-	if (!MapParser::GetInstance()->Load("assets/maps/map.tmx"))
+	if (!MapParser::GetInstance()->Load("assets/maps/mapBodoi.tmx"))
 	{
 		cout << "Failed to load map" << endl;
 	}
 	m_Map = MapParser::GetInstance()->GetMap("MAP");
 
 	TextureManager::GetInstance()->ParseTextures("assets/textures.tml");
+	SoundManager::GetInstance()->ParseSounds("assets/sounds.tml");
 
 
-	Properties* props = new Properties("IdleKnight", 50, 100, 120, 80);
+	Properties* props = new Properties("IdleKnight", 50, 450, 120, 80);
 	GameObject* Knight = ObjectFactory::GetInstance()->CreateObject("PLAYER", props);
 
 	props = new Properties("SlimeIdle", 300, 100, 32, 25);
@@ -78,14 +80,7 @@ void Game::Update()
 	float dt = Timer::GetInstance()->GetDeltaTime();
 	
 	GameStateMachine::GetInstance()->Update(dt);
-	/*m_Map->Update();
-	
-	for (int i = 0; i < m_GameObjects.size(); i++)
-	{
-		m_GameObjects[i]->Update(dt);
-	}
-	
-	Camera::GetInstance()->Update(dt);*/
+
 }
 
 void Game::Events()

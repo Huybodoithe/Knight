@@ -1,8 +1,22 @@
-﻿  GameOverState.cpp
+﻿  Game.cpp
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/States/GameOverState.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/States/GameOverState.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Collider.h(26,15): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'src/Game/Game.cpp')
+  
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Collider.h(27,15): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'src/Game/Game.cpp')
+  
+  PlayState.cpp
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'src/States/PlayState.cpp')
+  
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'src/States/PlayState.cpp')
+  
+  Generating Code...
   GameBodoi.vcxproj -> D:\ForVisualCode\GameBodoi\x64\Debug\GameBodoi.exe

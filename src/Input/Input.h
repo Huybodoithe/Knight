@@ -3,7 +3,7 @@
 
 enum Axis {HORIZONTAL, VERTICAL};
 
-enum MouseButton {LEFT_MOUSE, RIGHT_MOUSE, MIDDLE_MOUSE};
+enum MouseButton {RIGHT_MOUSE, LEFT_MOUSE, MIDDLE_MOUSE};
 
 class Input
 {

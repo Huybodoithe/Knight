@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sounds>
+	<effect id="hurt" source="assets/Sounds/hurt.wav"/>
+	<effect id="jump" source="assets/Sounds/jump.wav"/>
+	<music id="Meditation Impromptu" source="assets/Sounds/Meditation Impromptu 03.mp3"/>
+
+</sounds>

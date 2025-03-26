@@ -25,6 +25,8 @@ void Camera::Update(float dt)
 
 		m_ViewBox.x = m_Target->X - SCREEN_WIDTH / 2;
 		m_ViewBox.y = m_Target->Y - SCREEN_HEIGHT / 2;
+		m_ViewBox.w = SCREEN_WIDTH;
+		m_ViewBox.h = SCREEN_HEIGHT;
 
 		if (m_ViewBox.x < 0)
 		{
@@ -38,9 +40,9 @@ void Camera::Update(float dt)
 		{
 			m_ViewBox.y = 0;
 		}
-		else if (m_ViewBox.y > SCREEN_HEIGHT - m_ViewBox.h)
+		else if (m_ViewBox.y > SCREEN_HEIGHT*3 - m_ViewBox.h)
 		{
-			m_ViewBox.y = SCREEN_HEIGHT - m_ViewBox.h;
+			m_ViewBox.y = SCREEN_HEIGHT*3 - m_ViewBox.h;
 		}
 
 		m_Position = Vector2D(m_ViewBox.x, m_ViewBox.y);

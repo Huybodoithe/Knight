@@ -28,6 +28,6 @@ void GameOverState::Update(float dt)
 
 void GameOverState::Render()
 {
-	TextureManager::GetInstance()->Draw("Panel", SCREEN_WIDTH / 2 - 64, SCREEN_HEIGHT / 2 - 96, 128, 192, 1, 1);
+	TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2 - 64, SCREEN_HEIGHT / 2 - 96, 128, 192);
 	m_QuitButton->Render();
 }

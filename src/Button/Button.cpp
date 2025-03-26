@@ -26,5 +26,5 @@ void Button::Render()
 
 bool Button::IsClicked()
 {
-	return (m_IsHovered && Input::GetInstance()->IsMouseButtonPressed(RIGHT_MOUSE));
+	return (m_IsHovered && Input::GetInstance()->IsMouseButtonPressed(LEFT_MOUSE));
 }

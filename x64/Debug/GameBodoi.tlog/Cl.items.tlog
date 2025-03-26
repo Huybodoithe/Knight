@@ -13,6 +13,7 @@ D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp;D:\ForVisualCode\GameB
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\CollisionHandler.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\CollisionHandler.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Warrior.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Warrior.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Rigidbody.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\Rigidbody.obj
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Sounds\SoundManager.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\SoundManager.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\States\GameOverState.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\GameOverState.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\States\GameStateMachine.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\GameStateMachine.obj
 D:\ForVisualCode\GameBodoi\GameBodoi\src\States\MenuState.cpp;D:\ForVisualCode\GameBodoi\GameBodoi\x64\Debug\MenuState.obj

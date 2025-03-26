@@ -5,6 +5,7 @@
 #include "ObjectFactory.h"
 #include "Game.h"
 #include "Warrior.h"
+#include "SoundManager.h"
 
 
 static Registrar<Enemy> registrar("ENEMY");
@@ -82,18 +83,23 @@ void Enemy::Update(float dt)
 
 	//attack
 	Warrior* warrior = dynamic_cast<Warrior*>(Game::GetInstance()->GetGameObjects()[0]);
-	if (CollisonHandler::GetInstance()->CheckCollision(m_Collider->Get(), warrior->GetCollider()->Get()))
+	if (!m_IsDying)
 	{
-		if (m_Cooldown <= 0)
+		if (CollisonHandler::GetInstance()->CheckCollision(m_Collider->Get(), warrior->GetCollider()->Get()))
 		{
-			m_IsAttacking = true;
-			m_Animation->SetCurrentSeq("SlimeAttack");
-			m_Cooldown = ENEMY_ATTACK_COOLDOWN_TIME;
-			
-			warrior->SetHurt();
-			warrior->TakeDamage(ENEMY_ATTACK_DAMAGE);
+			if (m_Cooldown <= 0)
+			{
+				m_IsAttacking = true;
+				m_Animation->SetCurrentSeq("SlimeAttack");
+				m_Cooldown = ENEMY_ATTACK_COOLDOWN_TIME;
+
+				warrior->SetHurt();
+				SoundManager::GetInstance()->PlayEffect("hurt");
+				warrior->TakeDamage(ENEMY_ATTACK_DAMAGE);
+			}
 		}
 	}
+	
 
 	if (m_IsAttacking)
 	{

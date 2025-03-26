@@ -37,7 +37,7 @@ void PauseState::Update(float dt)
 
 void PauseState::Render()
 {
-	TextureManager::GetInstance()->Draw("Panel", SCREEN_WIDTH / 2 - 64, SCREEN_HEIGHT / 2 - 96, 128, 192, 1, 1);
+	TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2-64, (SCREEN_HEIGHT / 2)-96, 128, 192);
 	m_ContinueButton->Render();
 	m_QuitButton->Render();
 }
