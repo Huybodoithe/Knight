@@ -1,12 +1,14 @@
 #include "MenuState.h"
 #include "Game.h"
 #include "PlayState.h"
+#include "SoundManager.h"
 
 bool MenuState::Enter()
 {
 	m_StartButton = new Button("StartButtonDefault", "StartButtonHover", SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 96, 32);
 	m_QuitButton = new Button("QuitButtonDefault", "QuitButtonHover", SCREEN_WIDTH/2, SCREEN_HEIGHT/2+50, 96, 32);
 
+	SoundManager::GetInstance()->PlayMusic("FreeFire");
 	cout << "Enter MenuState" << endl;
 	return true;
 }

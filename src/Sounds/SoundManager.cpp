@@ -42,6 +42,11 @@ void SoundManager::LoadEffect(string id, string source)
 	else cout << Mix_GetError() << ": " << source << endl;
 }
 
+void SoundManager::SetMusicVolume(int volume)
+{
+	Mix_VolumeMusic(volume);
+}
+
 bool SoundManager::ParseSounds(string source)
 {
 	TiXmlDocument xml;

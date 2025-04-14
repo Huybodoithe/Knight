@@ -3,5 +3,8 @@
 	<effect id="hurt" source="assets/Sounds/hurt.wav"/>
 	<effect id="jump" source="assets/Sounds/jump.wav"/>
 	<music id="Meditation Impromptu" source="assets/Sounds/Meditation Impromptu 03.mp3"/>
+	<music id="FreeFire" source="assets/Sounds/freefireob1.mp3"/>
+	<music id="Glorious Morning" source="assets/Sounds/Glorious Morning.mp3"/>
 
+	
 </sounds>

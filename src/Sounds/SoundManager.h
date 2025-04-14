@@ -25,6 +25,8 @@ public:
 	void PlayEffect(string id);
 	void LoadEffect(string id, string source);
 
+	void SetMusicVolume(int volume);
+
 	void Clean();
 
 	bool ParseSounds(string source);

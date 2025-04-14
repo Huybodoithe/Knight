@@ -27,7 +27,8 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	
 	m_SpriteAnimation = new SpriteAnimation();
 	m_Rigidbody = new Rigidbody();
-	m_Rigidbody->SetGravity(3.0f);
+	m_Rigidbody->SetGravity(10.0f);
+	m_Rigidbody->SetMass(50.0f);
 
 	m_JumpTime = JUMPTIME;
 	m_JumpForce = JUMPFORCE;
@@ -36,11 +37,15 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 
 	m_Collider = new Collider();
 	m_Collider->SetBuffer(-50, -40, 100, 41);
+
+	m_FootCollider = new Collider();
+	m_FootCollider->SetBuffer(-50,-70, 100, 66);
 }
 
 void Warrior::Update(float dt)
 {
 	//dead
+	cout << dt << endl;
 	if (m_Hp <= 0)
 	{
 		m_IsDead = true;
@@ -135,7 +140,7 @@ void Warrior::Update(float dt)
 	{
 		if (m_Flip == SDL_FLIP_NONE)
 		{
-			m_AttakBox = { m_Collider->Get().x + 80, m_Collider->Get().y, 40, 40};
+			m_AttakBox = { m_Collider->Get().x+22 , m_Collider->Get().y, 40, 40};
 		}
 		else
 		{
@@ -195,8 +200,18 @@ void Warrior::Update(float dt)
 	m_Collider->Set(m_Transform->X, m_Transform->Y, 120, 80);
 	if (CollisonHandler::GetInstance()->MapCollision(m_Collider->Get()))
 	{
-		m_IsGrounded = true;
+		//m_IsGrounded = true;
 		m_Transform->Y = m_LastSafePosition.Y;
+	}
+	else
+	{
+		//m_IsGrounded = false;
+	}
+
+	if (CollisonHandler::GetInstance()->MapCollision(m_FootCollider->Get()))
+	{
+		m_IsGrounded = true;
+		//m_Transform->Y = m_LastSafePosition.Y;
 	}
 	else
 	{
@@ -217,9 +232,13 @@ void Warrior::Draw()
 {
 	m_SpriteAnimation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1, 1, m_Flip);
 
-	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
+	//m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
-	m_Collider->DrawBox();
+	//m_Collider->DrawBox();
+
+	m_FootCollider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
+
+	m_FootCollider->DrawBox();
 
 	Vector2D cam = Camera::GetInstance()->GetPosition();
 	SDL_Rect box = m_Collider->Get();

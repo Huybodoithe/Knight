@@ -59,7 +59,9 @@ bool Game::Init()
 	props = new Properties("SlimeIdle", 1200, 100, 32, 25);
 	GameObject* Slime5 = ObjectFactory::GetInstance()->CreateObject("ENEMY", props);
 
-	m_GameObjects.push_back(Knight);
+	m_GameObjects.push_back(Knight);//player
+
+	//slime
 	m_GameObjects.push_back(Slime1);
 	m_GameObjects.push_back(Slime2);
 	m_GameObjects.push_back(Slime3);
@@ -94,14 +96,7 @@ void Game::Render()
 	SDL_RenderClear(m_Renderer);
 
 	GameStateMachine::GetInstance()->Render();
-	//TextureManager::GetInstance()->Draw("dragon", 0, 0, 1956, 2801,0.5,0.5);
 
-	/*m_Map->Render();
-	
-	for (int i = 0; i < m_GameObjects.size(); i++)
-	{
-		m_GameObjects[i]->Draw();
-	}*/
 	SDL_RenderPresent(m_Renderer);
 }
 

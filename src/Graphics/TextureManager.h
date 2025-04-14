@@ -20,6 +20,7 @@ public:
 
 	//ve 1 cai gi do
 	void Draw(string id, int x, int y, int width, int height, float xScale, float yScale, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void DrawBackground(string id, int x, int y, int width, int height, float scrollTile, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void DrawFrame(string id, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void DrawTile(string tilesetID, int tileSize, int x, int y, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void DrawButton(string id, int x, int y, int width, int height, SDL_RendererFlip flip = SDL_FLIP_NONE);
