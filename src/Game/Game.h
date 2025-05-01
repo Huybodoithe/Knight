@@ -38,6 +38,9 @@ public:
 	inline SDL_Renderer* GetRenderer() { return m_Renderer; }
 	inline GameMap* GetMap() { return m_Map; }
 	inline vector<GameObject*> GetGameObjects() { return m_GameObjects; }
+	inline SDL_Rect GetTreasure() { return m_Treasure; }
+	inline bool isWon() { return m_IsWon; }
+	inline void SetVictory() { m_IsWon = true; }
 
 	void RemoveGameObject(GameObject* obj);
 private:
@@ -53,6 +56,7 @@ private:
 
 	vector<GameObject*> m_GameObjects;
 
+	SDL_Rect m_Treasure;
 
-/*	vector<GameState*> m_States*/;
+	bool m_IsWon;
 };

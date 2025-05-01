@@ -5,6 +5,8 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 #include "SoundManager.h"
+#include "CollisionHandler.h"
+#include "VictoryState.h"
 
 bool PlayState::Enter()
 {
@@ -37,6 +39,10 @@ void PlayState::Update(float dt)
 		//SDL_Delay(100);
 		GameStateMachine::GetInstance()->ChangeState(new GameOverState());
 	}
+	if (Game::GetInstance()->isWon())
+	{
+		GameStateMachine::GetInstance()->ChangeState(new VictoryState());
+	}
 
 	Game::GetInstance()->GetMap()->Update();
 
@@ -56,12 +62,20 @@ void PlayState::Update(float dt)
 
 void PlayState::Render()
 {
-	TextureManager::GetInstance()->DrawBackground("dragon", 0, 0, 1956, 2801, 0.5);
+	//TextureManager::GetInstance()->DrawBackground("dragon", 0, 0, 1956, 2801, 0.5);
 	Game::GetInstance()->GetMap()->Render();
 
 	for (int i = 0; i < Game::GetInstance()->GetGameObjects().size(); i++)
 	{
 		Game::GetInstance()->GetGameObjects()[i]->Draw();
 	}
+
 	m_PauseButton->Render();
+
+	/*Vector2D cam = Camera::GetInstance()->GetPosition();
+	SDL_Rect tmp = Game::GetInstance()->GetTreasure();
+	tmp.x = tmp.x - cam.X;
+	tmp.y = tmp.y - cam.Y;
+	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 255, 0, 255);
+	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &tmp);*/
 }

@@ -27,8 +27,8 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	
 	m_SpriteAnimation = new SpriteAnimation();
 	m_Rigidbody = new Rigidbody();
-	m_Rigidbody->SetGravity(10.0f);
-	m_Rigidbody->SetMass(50.0f);
+	m_Rigidbody->SetGravity(5.0f);
+	m_Rigidbody->SetMass(1.0f);
 
 	m_JumpTime = JUMPTIME;
 	m_JumpForce = JUMPFORCE;
@@ -39,7 +39,8 @@ Warrior::Warrior(Properties* props) : GameObject(props)
 	m_Collider->SetBuffer(-50, -40, 100, 41);
 
 	m_FootCollider = new Collider();
-	m_FootCollider->SetBuffer(-50,-70, 100, 66);
+	m_FootCollider->SetBuffer(-53,-70, 106, 66);
+
 }
 
 void Warrior::Update(float dt)
@@ -124,6 +125,7 @@ void Warrior::Update(float dt)
 		m_IsFalling = false;
 	}
 
+
 	//attack time
 	if (m_IsAttacking && m_AttackTime > 0)
 	{
@@ -200,24 +202,20 @@ void Warrior::Update(float dt)
 	m_Collider->Set(m_Transform->X, m_Transform->Y, 120, 80);
 	if (CollisonHandler::GetInstance()->MapCollision(m_Collider->Get()))
 	{
-		//m_IsGrounded = true;
 		m_Transform->Y = m_LastSafePosition.Y;
 	}
-	else
-	{
-		//m_IsGrounded = false;
-	}
+	
 
 	if (CollisonHandler::GetInstance()->MapCollision(m_FootCollider->Get()))
 	{
-		m_IsGrounded = true;
-		//m_Transform->Y = m_LastSafePosition.Y;
-	}
-	else
-	{
-		m_IsGrounded = false;
+		if(m_IsGrounded == false) m_IsGrounded = true;
 	}
 
+	if (CollisonHandler::GetInstance()->CheckCollision(Game::GetInstance()->GetTreasure(), m_Collider->Get()))
+	{
+		Game::GetInstance()->SetVictory();
+	}
+	
 	m_Origin->X = m_Transform->X + m_Width / 2;
 	m_Origin->Y = m_Transform->Y + m_Height / 2;
 
@@ -232,9 +230,9 @@ void Warrior::Draw()
 {
 	m_SpriteAnimation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1, 1, m_Flip);
 
-	//m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
+	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
-	//m_Collider->DrawBox();
+	m_Collider->DrawBox();
 
 	m_FootCollider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 

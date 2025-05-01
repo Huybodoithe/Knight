@@ -1,7 +1,7 @@
 #pragma once
 
 const int FPS = 120;
-const float DELTATIME = 1.0f;
+const float DELTATIME = 0.016f;
 class Timer
 {
 public:

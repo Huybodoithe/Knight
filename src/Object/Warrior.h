@@ -7,7 +7,7 @@
 #include "CollisionHandler.h"
 #include "GameStateMachine.h"
 
-#define JUMPTIME 0.5
+#define JUMPTIME 0.5f
 #define JUMPFORCE 10.0f
 
 #define RUN_FORCE 5.0f
@@ -67,4 +67,5 @@ private:
 	SDL_Rect m_AttakBox;
 
 	Collider* m_FootCollider;
+
 };

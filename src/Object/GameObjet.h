@@ -47,6 +47,7 @@ public:
 	Point* GetOrigin() { return m_Origin; }
 
 	bool IsDead() { return m_IsDead; }
+
 protected:
 	Transform* m_Transform;
 
