@@ -32,6 +32,9 @@ Enemy::Enemy(Properties* props) : GameObject(props)
 	m_Animation = new SeqAnimation(false);
 	m_Animation->Parse("assets/animations.tml");
 	m_Animation->SetCurrentSeq("SlimeIdle");
+
+	m_VisionBox = { int(m_Transform->X)-100, int(m_Transform->Y),100 + 32 + 100,50 + 25 };
+
 }
 
 void Enemy::Draw()
@@ -45,11 +48,31 @@ void Enemy::Draw()
 	SDL_Rect hpBar = { box.x - cam.X, box.y - 10 - cam.Y, m_Hp / 2, 5 };
 	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &hpBar);
+	SDL_Rect visionBox = { m_VisionBox.x - cam.X, m_VisionBox.y - cam.Y, m_VisionBox.w,m_VisionBox.h };
+	SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &visionBox);
+
 }
 
 void Enemy::Update(float dt)
 {
+	m_Rigidbody->UnSetForce();
+	m_VisionBox = { int(m_Transform->X) - 100, int(m_Transform->Y)-50,100 + 32 + 100,50 + 25 };
+
+	Warrior* warrior = dynamic_cast<Warrior*>(Game::GetInstance()->GetGameObjects()[0]);
+
 	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
+
+	if (CollisonHandler::GetInstance()->CheckCollision(m_VisionBox, warrior->GetCollider()->Get()))
+	{
+		if (!m_IsAttacking && !m_IsHurting && !m_IsDying)
+		{
+			if(m_Origin->X < warrior->GetOrigin()->X) m_Rigidbody->ApplyForceX(2.0f);
+			else m_Rigidbody->ApplyForceX(-2.0f);
+			if (CollisonHandler::GetInstance()->CheckCollision(m_Collider->Get(), warrior->GetCollider()->Get())) m_Rigidbody->UnSetForce();
+		}
+	}
+
+
 	//update x axis
 	m_Rigidbody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
@@ -82,7 +105,7 @@ void Enemy::Update(float dt)
 	}
 
 	//attack
-	Warrior* warrior = dynamic_cast<Warrior*>(Game::GetInstance()->GetGameObjects()[0]);
+	
 	if (!m_IsDying)
 	{
 		if (CollisonHandler::GetInstance()->CheckCollision(m_Collider->Get(), warrior->GetCollider()->Get()))
@@ -126,6 +149,7 @@ void Enemy::Update(float dt)
 		{
 			m_IsDying = false;
 			m_IsDead = true;
+			Game::GetInstance()->ChangePointCount();
 		}
 	}
 
@@ -143,8 +167,12 @@ void Enemy::Update(float dt)
 		m_Animation->SetCurrentSeq("SlimeIdle");
 	}
 
+
+	m_Origin->X = m_Transform->X + m_Width / 2;
+	m_Origin->Y = m_Transform->Y + m_Height / 2;
 	
-	
+	if (m_Origin->X < warrior->GetOrigin()->X) m_Flip = SDL_FLIP_HORIZONTAL;
+	else m_Flip = SDL_FLIP_NONE;
 }
 
 void Enemy::SetHurt()

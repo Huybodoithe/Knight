@@ -39,8 +39,12 @@ public:
 	inline GameMap* GetMap() { return m_Map; }
 	inline vector<GameObject*> GetGameObjects() { return m_GameObjects; }
 	inline SDL_Rect GetTreasure() { return m_Treasure; }
+
 	inline bool isWon() { return m_IsWon; }
 	inline void SetVictory() { m_IsWon = true; }
+
+	inline int GetPointCount() { return m_PointCount; }
+	inline void ChangePointCount() { m_PointCount++; }
 
 	void RemoveGameObject(GameObject* obj);
 private:
@@ -59,4 +63,6 @@ private:
 	SDL_Rect m_Treasure;
 
 	bool m_IsWon;
+
+	int m_PointCount;
 };

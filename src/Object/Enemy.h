@@ -46,4 +46,5 @@ private:
 	bool m_IsAttacking;
 	float m_AttakTime;
 
+	SDL_Rect m_VisionBox;
 };

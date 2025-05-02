@@ -75,6 +75,8 @@ bool Game::Init()
 	m_Treasure = { 1824,96,32,32 };
 	m_IsWon = false;
 
+	m_PointCount = 0;
+
 	GameStateMachine::GetInstance()->PushState(new MenuState());
 
 	return true;
