@@ -42,15 +42,15 @@ void Enemy::Draw()
 {
 	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 1, 1, m_Flip);
 
-	m_Collider->DrawBox();
+	//m_Collider->DrawBox();
 
 	Vector2D cam = Camera::GetInstance()->GetPosition();
 	SDL_Rect box = m_Collider->Get();
 	SDL_Rect hpBar = { box.x - cam.X, box.y - 10 - cam.Y, m_Hp / 2, 5 };
 	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &hpBar);
-	SDL_Rect visionBox = { m_VisionBox.x - cam.X, m_VisionBox.y - cam.Y, m_VisionBox.w,m_VisionBox.h };
-	SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &visionBox);
+	//SDL_Rect visionBox = { m_VisionBox.x - cam.X, m_VisionBox.y - cam.Y, m_VisionBox.w,m_VisionBox.h };
+	//SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &visionBox);
 
 }
 

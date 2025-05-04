@@ -233,11 +233,11 @@ void Warrior::Draw()
 
 	m_Collider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
-	m_Collider->DrawBox();
+	//m_Collider->DrawBox();
 
 	m_FootCollider->Set(m_Transform->X, m_Transform->Y, m_Width, m_Height);
 
-	m_FootCollider->DrawBox();
+	//m_FootCollider->DrawBox();
 
 	Vector2D cam = Camera::GetInstance()->GetPosition();
 	SDL_Rect box = m_Collider->Get();

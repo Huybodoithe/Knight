@@ -38,7 +38,8 @@ void MenuState::Update(float dt)
 
 void MenuState::Render()
 {
-	TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH/2-64, SCREEN_HEIGHT/2-96, 128, 192);
+	TextureManager::GetInstance()->Draw("MenuBackground", 0, 0, 960, 1280, 1, 0.5);
+	//TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH/2-64, SCREEN_HEIGHT/2-96, 128, 192);
 	m_StartButton->Render();
 	m_QuitButton->Render();
 }

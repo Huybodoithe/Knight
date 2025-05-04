@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "TextManager.h"
 
 bool PauseState::Enter()
 {
@@ -37,7 +38,8 @@ void PauseState::Update(float dt)
 
 void PauseState::Render()
 {
-	TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2-64, (SCREEN_HEIGHT / 2)-96, 128, 192);
+	TextureManager::GetInstance()->DrawBackground("PauseBackground", 0, 0, 960, 640, 1);
+	//TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2-64, (SCREEN_HEIGHT / 2)-96, 128, 192);
 	m_ContinueButton->Render();
 	m_QuitButton->Render();
 }

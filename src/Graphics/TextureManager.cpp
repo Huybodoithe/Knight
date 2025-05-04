@@ -75,10 +75,10 @@ void TextureManager::DrawBackground(string id, int x, int y, int width, int heig
 {
 	SDL_Rect srcRect = { 0,0,width,height };
 
-	Vector2D cam = Camera::GetInstance()->GetPosition();
+	//Vector2D cam = Camera::GetInstance()->GetPosition();
 
-	SDL_Rect destRect = { x - cam.X*scrollTile,y - cam.Y*scrollTile,width ,height };
-
+	//SDL_Rect destRect = { x - cam.X*scrollTile,y - cam.Y*scrollTile,width ,height };
+	SDL_Rect destRect = { x ,y ,width ,height };
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 

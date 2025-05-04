@@ -41,5 +41,9 @@
 	<texture id="PauseButtonHover" source="assets/Button/PauseButtonHover.png"/>
 
 	<texture id="Panel" source="assets/Panel.png"/>
-
+	<texture id="VictoryBackground" source="assets/Victory_960x640.png"/>
+	<texture id="PlayBackground" source="assets/resized_castle_960x1280.png"/>
+	<texture id="MenuBackground" source="assets/resized_bridge_960x1280.png"/>
+	<texture id="PauseBackground" source="assets/resized_image_960x640.png"/>GameOver.png
+	<texture id="GameOverBackground" source="assets/GameOver.png"/>
 </textures>

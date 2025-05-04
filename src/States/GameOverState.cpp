@@ -3,7 +3,7 @@
 
 bool GameOverState::Enter()
 {
-	m_QuitButton = new Button("QuitButtonDefault", "QuitButtonHover", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 , 96, 32);
+	m_QuitButton = new Button("QuitButtonDefault", "QuitButtonHover", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2-2 , 96, 32);
 	cout << "Enter GameOverState" << endl;
 	return true;
 }
@@ -28,6 +28,7 @@ void GameOverState::Update(float dt)
 
 void GameOverState::Render()
 {
-	TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2 - 64, SCREEN_HEIGHT / 2 - 96, 128, 192);
+	TextureManager::GetInstance()->DrawBackground("GameOverBackground", 0, 0, 960, 640, 1);
+	//TextureManager::GetInstance()->DrawButton("Panel", SCREEN_WIDTH / 2 - 64, SCREEN_HEIGHT / 2 - 96, 128, 192);
 	m_QuitButton->Render();
 }

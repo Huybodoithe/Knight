@@ -12,8 +12,8 @@
 bool PlayState::Enter()
 {
 	m_PauseButton = new Button("PauseButtonDefault", "PauseButtonHover", 30, 30, 32, 32);
-	//SoundManager::GetInstance()->PlayMusic("Glorious Morning");
-	//SoundManager::GetInstance()->SetMusicVolume(10);
+	SoundManager::GetInstance()->PlayMusic("Waves");
+	SoundManager::GetInstance()->SetMusicVolume(20);
     cout << "Enter PlayState" << endl;
 	return true;
 }
@@ -63,7 +63,8 @@ void PlayState::Update(float dt)
 
 void PlayState::Render()
 {
-	//TextureManager::GetInstance()->DrawBackground("dragon", 0, 0, 1956, 2801, 0.5);
+
+	TextureManager::GetInstance()->Draw("PlayBackground", 0, 0, 960, 1280, 2,1.5);
 	Game::GetInstance()->GetMap()->Render();
 
 	for (int i = 0; i < Game::GetInstance()->GetGameObjects().size(); i++)
