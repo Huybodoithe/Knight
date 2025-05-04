@@ -7,12 +7,13 @@
 #include "SoundManager.h"
 #include "CollisionHandler.h"
 #include "VictoryState.h"
+#include "TextManager.h"
 
 bool PlayState::Enter()
 {
 	m_PauseButton = new Button("PauseButtonDefault", "PauseButtonHover", 30, 30, 32, 32);
-	SoundManager::GetInstance()->PlayMusic("Glorious Morning");
-	SoundManager::GetInstance()->SetMusicVolume(10);
+	//SoundManager::GetInstance()->PlayMusic("Glorious Morning");
+	//SoundManager::GetInstance()->SetMusicVolume(10);
     cout << "Enter PlayState" << endl;
 	return true;
 }
@@ -71,6 +72,8 @@ void PlayState::Render()
 	}
 
 	m_PauseButton->Render();
+
+	TextManager::GetInstance()->Render();
 
 	/*Vector2D cam = Camera::GetInstance()->GetPosition();
 	SDL_Rect tmp = Game::GetInstance()->GetTreasure();

@@ -92,6 +92,7 @@ void Warrior::Update(float dt)
 		m_Rigidbody->UnSetForce();
 		m_IsAttacking = true;
 		m_Cooldown = WARROR_ATTACK_COOLDOWN_TIME;
+		SoundManager::GetInstance()->PlayEffect("slash");
 	}
 
 	//jump
@@ -211,7 +212,7 @@ void Warrior::Update(float dt)
 		if(m_IsGrounded == false) m_IsGrounded = true;
 	}
 
-	if (CollisonHandler::GetInstance()->CheckCollision(Game::GetInstance()->GetTreasure(), m_Collider->Get()))
+	if (CollisonHandler::GetInstance()->CheckCollision(Game::GetInstance()->GetTreasure(), m_Collider->Get()) && Game::GetInstance()->GetKillCount() >= 10)
 	{
 		Game::GetInstance()->SetVictory();
 	}

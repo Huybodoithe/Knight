@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Warrior.h"
 #include "SoundManager.h"
+#include "TextManager.h"
 
 
 static Registrar<Enemy> registrar("ENEMY");
@@ -149,7 +150,8 @@ void Enemy::Update(float dt)
 		{
 			m_IsDying = false;
 			m_IsDead = true;
-			Game::GetInstance()->ChangePointCount();
+			Game::GetInstance()->ChangeKillCount();
+			TextManager::GetInstance()->UpdateKillsCount(Game::GetInstance()->GetKillCount());
 		}
 	}
 

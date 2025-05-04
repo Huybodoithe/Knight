@@ -7,6 +7,7 @@
 #include "GameState.h"
 #include "GameStateMachine.h"
 #include "Input.h"
+#include "SDL_ttf.h"
 
 using namespace std;
 
@@ -43,8 +44,8 @@ public:
 	inline bool isWon() { return m_IsWon; }
 	inline void SetVictory() { m_IsWon = true; }
 
-	inline int GetPointCount() { return m_PointCount; }
-	inline void ChangePointCount() { m_PointCount++; }
+	inline int GetKillCount() { return m_KillCount; }
+	inline void ChangeKillCount() { m_KillCount++; }
 
 	void RemoveGameObject(GameObject* obj);
 private:
@@ -64,5 +65,5 @@ private:
 
 	bool m_IsWon;
 
-	int m_PointCount;
+	int m_KillCount;
 };
