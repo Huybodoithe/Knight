@@ -1,24 +1,15 @@
-﻿  Enemy.cpp
+﻿  Game.cpp
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Enemy.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\GameObjet.h(35,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/Object/Enemy.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Collider.h(26,15): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'src/Object/Enemy.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\ForVisualCode\GameBodoi\GameBodoi\src\Physics\Collider.h(27,15): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'src/Object/Enemy.cpp')
+  (compiling source file 'src/Game/Game.cpp')
   
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(49,27): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(49,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(49,47): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(49,47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(64,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(64,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(81,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(81,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(91,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\ForVisualCode\GameBodoi\GameBodoi\src\Object\Enemy.cpp(91,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\ForVisualCode\GameBodoi\GameBodoi\src\Game\Game.cpp(25,10): warning C4305: 'return': truncation from 'int' to 'bool'
   GameBodoi.vcxproj -> D:\ForVisualCode\GameBodoi\x64\Debug\GameBodoi.exe

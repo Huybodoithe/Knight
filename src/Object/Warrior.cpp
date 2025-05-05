@@ -245,14 +245,15 @@ void Warrior::Draw()
 	SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderFillRect(Game::GetInstance()->GetRenderer(), &hpBar);
 	
-	if (m_IsAttacking)
+	//ve attackbox
+	/*if (m_IsAttacking)
 	{
 		box = m_AttakBox;
 		box.x -= cam.X;
 		box.y -= cam.Y;
 		SDL_SetRenderDrawColor(Game::GetInstance()->GetRenderer(), 255, 0, 255, 255);
 		SDL_RenderDrawRect(Game::GetInstance()->GetRenderer(), &box);
-	}
+	}*/
 	
 }
 
