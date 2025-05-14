@@ -8,7 +8,7 @@ Game rất hay và bổ ích
 Knight là 1 game thuộc thể loại platformer. Nhập vai vào 1 anh hiệp sĩ, bạn hãy cố gắng hết sức để tiêu diệt slime và tìm kho báu.
 
 - [1. Bắt đầu game](#1-bat-dau-game)
-- [2. Các thành phần trong game:](#2-cac-thanh-phan-trong-game)
+- [2. Các thành phần trong game](#2-cac-thanh-phan-trong-game)
 - [3. Cách chơi](#3-cach-choi)
 - [4. Chiến thắng và thất bại](#4-chien-thang-va-that-bai)
 
@@ -19,7 +19,7 @@ Bấm START để vào game
 Giao diện của game khi vừa bắt đầu:
 ![image](https://github.com/user-attachments/assets/bd883dfe-6fb9-4df8-b000-78e631e0f705)  
 
-# 2. Các thành phần trong game:
+# 2. Các thành phần trong game
 Nhân vật chính Knight:
 ![image](https://github.com/user-attachments/assets/7ce5d9bc-9eb0-46e1-9cd5-1939eaccc732)  
 
