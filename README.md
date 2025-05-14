@@ -4,13 +4,13 @@
 - **Mã sinh viên:** 24021520
 
 # Giới thiệu game
-Game rất hay và bổ ích
+Game rất hay và bổ ích  
 Knight là 1 game thuộc thể loại platformer. Nhập vai vào 1 anh hiệp sĩ, bạn hãy cố gắng hết sức để tiêu diệt slime và tìm kho báu.
 
-- [1. Bắt đầu game](#1bắt-đầu-game)
-- [2. Các thành phần trong game:](#3-các-thành-phần-trong-game)
-- [3. Cách chơi](#4-cách-chơi)
-- [4. Chiến thắng và thất bại](#5-chiến-thắng-và-thất-bại)
+- [1. Bắt đầu game](#1-bat-dau-game)
+- [2. Các thành phần trong game:](#2-cac-thanh-phan-trong-game)
+- [3. Cách chơi](#3-cach-choi)
+- [4. Chiến thắng và thất bại](#4-chien-thang-va-that-bai)
 
 # 1. Bắt đầu game
 Bấm START để vào game
@@ -45,6 +45,12 @@ Kho báu:
 Tiêu diệt ít nhất 10 con Slime và tìm vị trí của kho báu để dành chiến thắng  
 ![Screenshot 2025-05-14 095350](https://github.com/user-attachments/assets/e33492a0-9ea9-481f-9a0b-48c0ec8718d1)  
 
+Kill count là số lượng quái vật đã tiêu diệt được
+
+## Dừng trò chơi
+Bấm nút ![image](https://github.com/user-attachments/assets/b5380179-becf-4613-8520-e37c8a03128c) ở phía trên bên trái màn hình để tạm dừng trò chơi  
+![image](https://github.com/user-attachments/assets/c4ffc2c9-20fe-4dbe-87be-d34a93742e91)
+
 
 # 4. Chiến thắng và thất bại
 Bạn sẽ chiến thắng nếu hoàn thành nhiệm vụ
@@ -57,4 +63,6 @@ Bạn sẽ thất bại nếu hết máu
 - Cách tổ chức các file và những yếu tố cần thiết của 1 game platformer [Youtube Madsycode](https://www.youtube.com/playlist?list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_)
 - Nguồn sprite, hiệu ứng âm thanh [Itch.io](https://itch.io/)
 - Nguồn background [Pinterest](https://www.pinterest.com/)
-- Nguồn nhạc nền: 
+- Nguồn nhạc nền: [Glorious Morning](https://www.youtube.com/watch?v=7T_YtklLyyo&list=RD7T_YtklLyyo&start_radio=1)
+                  [Waves](https://www.youtube.com/watch?v=RGNTdUHN64Q&list=WL&index=16)
+- Nguồn tinyxml dùng để tải hình ảnh map lên từ file tml [TinyXML](https://github.com/vmayoral/tinyxml)
